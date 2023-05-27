@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class StructureHelper
+public static class StructureHelper
 {
     public static List<Node> TraverseGraphToExtractLowestLeafes(RoomNode parentNode)
     {
@@ -35,7 +35,8 @@ public class StructureHelper
         return result;
     }
 
-    public static Vector2Int GenerateBottomLeftCornerBetween(Vector2Int boundaryLeftPoint, Vector2Int boundaryRightPoint, float pointModifier, int offset)
+    public static Vector2Int GenerateBottomLeftCornerBetween(
+        Vector2Int boundaryLeftPoint, Vector2Int boundaryRightPoint, float pointModifier, int offset)
     {
         int minX = boundaryLeftPoint.x + offset;
         int maxX = boundaryRightPoint.x - offset;
@@ -48,7 +49,8 @@ public class StructureHelper
             );
     }
     
-    public static Vector2Int GenerateTopRightCornerBetween(Vector2Int boundaryLeftPoint, Vector2Int boundaryRightPoint, float pointModifier, int offset)
+    public static Vector2Int GenerateTopRightCornerBetween(
+        Vector2Int boundaryLeftPoint, Vector2Int boundaryRightPoint, float pointModifier, int offset)
     {
         int minX = boundaryLeftPoint.x + offset;
         int maxX = boundaryRightPoint.x - offset;

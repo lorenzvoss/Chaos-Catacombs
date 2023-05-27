@@ -70,8 +70,8 @@ public class BinarySpacePartitioner
     private Line GetLineDividingSpace(Vector2Int bottomLeftAreaCorner, Vector2Int topRightAreaCorner, int roomWidthMin, int roomLengthMin)
     {
         Orientation orientation;
-        bool lengthStatus = (topRightAreaCorner.y - bottomLeftAreaCorner.y) >= roomWidthMin * 2;
-        bool widthStatus = (topRightAreaCorner.x - bottomLeftAreaCorner.x) >= roomLengthMin * 2;
+        bool lengthStatus = (topRightAreaCorner.y - bottomLeftAreaCorner.y) >= roomLengthMin * 2;
+        bool widthStatus = (topRightAreaCorner.x - bottomLeftAreaCorner.x) >= roomWidthMin * 2;
         if(lengthStatus && widthStatus)
         {
             orientation = (Orientation)(Random.Range(0, 2));
