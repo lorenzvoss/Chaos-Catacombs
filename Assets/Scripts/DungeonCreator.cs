@@ -10,6 +10,12 @@ public class DungeonCreator : MonoBehaviour
     public int maxIterations;
     public int corridorWidht;
     public Material material;
+    [Range(0.0f, 0.3f)]
+    public float RoomBottomCornerModifier;
+    [Range(0.7f, 1f)]
+    public float RoomTopCornerModifier;
+    [Range(0, 2)]
+    public int RoomOffset;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +25,8 @@ public class DungeonCreator : MonoBehaviour
     private void CreateDungeon()
     {
         DungeonGenerator generator = new DungeonGenerator(dungeonWidth, dungeonLength);
-        var listOfRooms = generator.CalculateRooms(maxIterations, roomWidthMin, roomLengthMin);
+        var listOfRooms = generator.CalculateRooms(maxIterations, roomWidthMin, roomLengthMin,
+            RoomBottomCornerModifier, RoomTopCornerModifier, RoomOffset);
         for (int i = 0; i < listOfRooms.Count; i++)
         {
             CreateMesh(listOfRooms[i].BottomLeftAreaCorner, listOfRooms[i].TopRightAreaCorner);
@@ -29,8 +36,8 @@ public class DungeonCreator : MonoBehaviour
     private void CreateMesh(Vector2 bottomLeftCorner, Vector2 topRightCorner)
     {
         Vector3 bottomLeftV = new Vector3(bottomLeftCorner.x, 0, bottomLeftCorner.y);
-        Vector3 bottomRightV= new Vector3(topRightCorner.x, 0, bottomLeftCorner.y);
-        Vector3 topLeftV= new Vector3(bottomLeftCorner.x, 0, topRightCorner.y);
+        Vector3 bottomRightV = new Vector3(topRightCorner.x, 0, bottomLeftCorner.y);
+        Vector3 topLeftV = new Vector3(bottomLeftCorner.x, 0, topRightCorner.y);
         Vector3 topRightV = new Vector3(topRightCorner.x, 0, topRightCorner.y);
 
         Vector3[] vertices = new Vector3[]
@@ -42,7 +49,7 @@ public class DungeonCreator : MonoBehaviour
         };
 
         Vector2[] uvs = new Vector2[vertices.Length];
-        for(int i = 0; i < uvs.Length; i++)
+        for (int i = 0; i < uvs.Length; i++)
         {
             uvs[i] = new Vector2(vertices[i].x, vertices[i].z);
         }

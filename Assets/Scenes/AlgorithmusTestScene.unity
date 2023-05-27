@@ -132,7 +132,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 802172224}
-  - component: {fileID: 802172223}
   - component: {fileID: 802172222}
   m_Layer: 0
   m_Name: DungeonCreator
@@ -159,26 +158,10 @@ MonoBehaviour:
   roomLengthMin: 25
   maxIterations: 10
   corridorWidht: 5
-  material: {fileID: 2100000, guid: 88056ad3707bb6346ad6e69bf350d54d, type: 2}
---- !u!114 &802172223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 802172221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7debca3dd2029c84688be995c767d16e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dungeonWidth: 0
-  dungeonLength: 0
-  roomWidthMin: 0
-  roomLengthMin: 0
-  maxIterations: 0
-  corridorWidht: 0
-  material: {fileID: 0}
+  material: {fileID: 2100000, guid: 55a116e262661884fbb77a46cafa561f, type: 2}
+  RoomBottomCornerModifier: 0.1
+  RoomTopCornerModifier: 0.9
+  RoomOffset: 1
 --- !u!4 &802172224
 Transform:
   m_ObjectHideFlags: 0
@@ -364,8 +347,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1763918827}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: -0.41061845, y: 0.57515395, z: -0.40914127, w: -0.5772295}
+  m_LocalPosition: {x: 91.50743, y: 101.175575, z: 35.409798}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

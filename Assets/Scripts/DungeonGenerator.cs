@@ -15,14 +15,16 @@ public class DungeonGenerator
         DungeonLength = length;
     }
 
-    public List<Node> CalculateRooms(int maxIterations, int roomWidthMin, int roomLengthMin)
+    public List<Node> CalculateRooms(int maxIterations, int roomWidthMin, int roomLengthMin, 
+        float roomBottomCornerModifier, float roomTopCornerModifier, int roomOffset)
     {
         BinarySpacePartitioner partitioner = new BinarySpacePartitioner(DungeonWidht, DungeonLength);
         allSpaceNodes = partitioner.PrepareNodesCollection(maxIterations, roomWidthMin, roomLengthMin);
         List<Node> roomSpaces = StructureHelper.TraverseGraphToExtractLowestLeafes(partitioner.RootNode);
 
         RoomGenerator roomGenerator = new RoomGenerator(maxIterations, roomLengthMin, roomWidthMin);
-        List<RoomNode> roomList = roomGenerator.GenerateRoomsInGivenSpace(roomSpaces);
+        List<RoomNode> roomList = roomGenerator.GenerateRoomsInGivenSpace(roomSpaces, roomBottomCornerModifier,
+            roomTopCornerModifier, roomOffset);
         return new List<Node>(roomList);
     }
 }
