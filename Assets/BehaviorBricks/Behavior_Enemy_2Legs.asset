@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a7c8ca992f915438a96c2077353778, type: 3}
+  m_Name: Behavior_Enemy_2Legs
+  m_EditorClassIdentifier: 
+  brickName: Assets/BehaviorBricks/Behavior_Enemy_2Legs.asset
+  xml: "\uFEFF<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<BehaviorBricks xmlns:ref=\"urn:padaone\"
+    version=\"1.0\">\n  <BehaviorTree id=\"0\" />\n  <runtimeInfo>\n    <BehaviorTree
+    id=\"0\" guid=\"bd0277420810e47c0ac2eeba183d80c0\" nextId=\"5\">\n      <root>\n       
+    <RepeatDecorator id=\"3\" />\n      </root>\n      <inputParams>\n        <inputValues>\n         
+    <entry name=\"target\" type=\"UnityEngine.GameObject\" isBlackboard=\"False\"
+    />\n        </inputValues>\n      </inputParams>\n      <outputParams />\n     
+    <localParams />\n    </BehaviorTree>\n    <RepeatDecorator id=\"3\" loops=\"-1\"
+    policy=\"ContinueWhenChildFails\">\n      <child>\n        <ActionNode id=\"4\"
+    />\n      </child>\n      <inputParams />\n      <outputParams />\n      <localParams
+    />\n    </RepeatDecorator>\n    <ActionNode id=\"4\" action=\"MyActions/MoveToGameObjectSideways\">\n     
+    <inputParams>\n        <inputValues>\n          <entry name=\"target\" type=\"UnityEngine.GameObject\"
+    isBlackboard=\"True\" blackboard=\"target\" />\n        </inputValues>\n     
+    </inputParams>\n      <outputParams />\n      <localParams />\n    </ActionNode>\n 
+    </runtimeInfo>\n  <editorInfo>\n    <BehaviorTree id=\"0\" _name=\"Behavior_Enemy_2Legs\"
+    _description=\"\" _removeIfClosed=\"False\">\n      <_rootList>\n        <elem>\n         
+    <RepeatDecorator id=\"3\" />\n        </elem>\n        <elem>\n          <ActionNode
+    id=\"4\" />\n        </elem>\n      </_rootList>\n      <_nodes>\n        <nodes>\n         
+    <RepeatDecorator id=\"3\" />\n          <ActionNode id=\"4\" />\n        </nodes>\n     
+    </_nodes>\n    </BehaviorTree>\n    <RepeatDecorator id=\"3\">\n      <_data>\n       
+    <data breakpoint=\"0\" selected=\"False\" position=\"373.4375 78.25\" name=\"Repeat\"
+    description=\"Repeats the execution of its child node\" cardinality=\"1\" hasParent=\"False\">\n         
+    <BehaviorTree id=\"0\" />\n          <RepeatDecorator id=\"3\" />\n        </data>\n     
+    </_data>\n    </RepeatDecorator>\n    <ActionNode id=\"4\">\n      <_data>\n       
+    <data breakpoint=\"0\" selected=\"True\" position=\"290 230\" name=\"MyActions/MoveToGameObjectSideways\"
+    description=\"Moves the game object towards a given target by using a NavMeshAgent\"
+    cardinality=\"0\" hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n         
+    <ActionNode id=\"4\" />\n          <RepeatDecorator id=\"3\" />\n        </data>\n     
+    </_data>\n    </ActionNode>\n  </editorInfo>\n</BehaviorBricks>"
+  zoom: 1
+  subslist:
+  - {fileID: 11400000}
+  _guid: bd0277420810e47c0ac2eeba183d80c0

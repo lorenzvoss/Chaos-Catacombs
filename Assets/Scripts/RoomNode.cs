@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class RoomNode : Node
 {
+    public bool isCleared = false;
+
     public RoomNode(Vector2Int bottonLeftAreaCorner, Vector2Int topRightAreaCorner, Node parentNode, 
         int index) : base(parentNode)
     {
