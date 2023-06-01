@@ -22,7 +22,6 @@ namespace BBUnity.Actions
 
         private Transform gameObjectTransform;
 
-        public float jumpDelay = 2f;
         private float nextJumpTime;
         private bool isMovingRight;
 
@@ -51,7 +50,7 @@ namespace BBUnity.Actions
                 navAgent.Resume();
             #endif
 
-            nextJumpTime = Time.time + jumpDelay;
+            nextJumpTime = Time.time + Random.Range(1.5f, 2.5f);
             isMovingRight = true;
         }
 
@@ -61,18 +60,18 @@ namespace BBUnity.Actions
         public override TaskStatus OnUpdate()
         {
             gameObjectTransform = gameObject.GetComponent<Transform>();
-            if(Vector3.Distance(gameObjectTransform.position, targetTransform.position) >= 5){
+            if(Vector3.Distance(gameObjectTransform.position, targetTransform.position) >= 2){
                 //Sidejump implementation
                 if(Time.time >= nextJumpTime)
                 {   
                     if(isMovingRight)
                     {
                         gameObjectTransform.position = gameObjectTransform.position + (Quaternion.Euler(0,90,0) * (gameObjectTransform.position - targetTransform.position))*0.5f;
-                        nextJumpTime= Time.time + jumpDelay;
+                        nextJumpTime= Time.time + Random.Range(1.5f, 2.5f);
                     }
                     else{
                         gameObjectTransform.position = gameObjectTransform.position - (Quaternion.Euler(0,90,0) * (gameObjectTransform.position - targetTransform.position))*0.5f;
-                        nextJumpTime= Time.time + jumpDelay;
+                        nextJumpTime= Time.time + Random.Range(1.5f, 2.5f);
                     }
                     isMovingRight = !isMovingRight;
                 }
