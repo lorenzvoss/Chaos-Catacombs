@@ -54,7 +54,7 @@ MonoBehaviour:
     cardinality=\"-1\" hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n         
     <SequenceNode id=\"3\" />\n          <RepeatDecorator id=\"4\" />\n        </data>\n     
     </_data>\n    </SequenceNode>\n    <ActionNode id=\"2\">\n      <_data>\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"278.375 356\" name=\"Vector3/GetRandomInArea\"
+    <data breakpoint=\"0\" selected=\"True\" position=\"278.375 356\" name=\"Vector3/GetRandomInArea\"
     description=\"Gets a random position from a given area\" cardinality=\"0\" hasParent=\"True\">\n         
     <BehaviorTree id=\"0\" />\n          <ActionNode id=\"2\" />\n          <SequenceNode
     id=\"3\" />\n        </data>\n      </_data>\n    </ActionNode>\n    <ActionNode

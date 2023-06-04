@@ -19,22 +19,21 @@ MonoBehaviour:
     <RepeatDecorator id=\"12\" />\n      </root>\n      <inputParams>\n        <inputValues>\n         
     <entry name=\"target\" type=\"UnityEngine.GameObject\" isBlackboard=\"False\"
     />\n          <entry name=\"wanderArea\" type=\"UnityEngine.GameObject\" isBlackboard=\"False\"
-    />\n          <entry name=\"angle\" type=\"System.Single\" isBlackboard=\"False\"
-    value=\"0\" />\n          <entry name=\"closeDistance\" type=\"System.Single\"
-    isBlackboard=\"False\" value=\"0\" />\n        </inputValues>\n      </inputParams>\n     
-    <outputParams />\n      <localParams />\n    </BehaviorTree>\n    <RepeatDecorator
-    id=\"12\" loops=\"-1\" policy=\"ContinueWhenChildFails\">\n      <child>\n       
-    <PrioritySelectorNode id=\"6\" />\n      </child>\n      <inputParams />\n     
-    <outputParams />\n      <localParams />\n    </RepeatDecorator>\n    <PrioritySelectorNode
-    id=\"6\">\n      <children>\n        <elem>\n          <GuardAndNode>\n           
-    <guard>\n              <ConditionEvalNode id=\"11\" />\n            </guard>\n           
-    <child>\n              <ActionNode id=\"10\" />\n            </child>\n         
-    </GuardAndNode>\n        </elem>\n        <elem>\n          <GuardAndNode>\n           
-    <guard>\n              <ConditionEvalNode id=\"8\" />\n            </guard>\n           
-    <child>\n              <SubbehaviorNode id=\"7\" />\n            </child>\n         
-    </GuardAndNode>\n        </elem>\n      </children>\n      <inputParams />\n     
-    <outputParams />\n      <localParams />\n    </PrioritySelectorNode>\n    <ConditionEvalNode
-    id=\"11\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"Perception/IsTargetClose\">\n     
+    />\n          <entry name=\"closeDistance\" type=\"System.Single\" isBlackboard=\"False\"
+    value=\"0\" />\n        </inputValues>\n      </inputParams>\n      <outputParams
+    />\n      <localParams />\n    </BehaviorTree>\n    <RepeatDecorator id=\"12\"
+    loops=\"-1\" policy=\"ContinueWhenChildFails\">\n      <child>\n        <PrioritySelectorNode
+    id=\"6\" />\n      </child>\n      <inputParams />\n      <outputParams />\n     
+    <localParams />\n    </RepeatDecorator>\n    <PrioritySelectorNode id=\"6\">\n     
+    <children>\n        <elem>\n          <GuardAndNode>\n            <guard>\n             
+    <ConditionEvalNode id=\"11\" />\n            </guard>\n            <child>\n             
+    <ActionNode id=\"10\" />\n            </child>\n          </GuardAndNode>\n       
+    </elem>\n        <elem>\n          <GuardAndNode>\n            <guard>\n             
+    <ConditionEvalNode id=\"8\" />\n            </guard>\n            <child>\n             
+    <SubbehaviorNode id=\"7\" />\n            </child>\n          </GuardAndNode>\n       
+    </elem>\n      </children>\n      <inputParams />\n      <outputParams />\n     
+    <localParams />\n    </PrioritySelectorNode>\n    <ConditionEvalNode id=\"11\"
+    policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"Perception/IsTargetClose\">\n     
     <inputParams>\n        <inputValues>\n          <entry name=\"target\" type=\"UnityEngine.GameObject\"
     isBlackboard=\"True\" blackboard=\"target\" />\n          <entry name=\"closeDistance\"
     type=\"System.Single\" isBlackboard=\"True\" blackboard=\"closeDistance\" />\n       
@@ -70,7 +69,7 @@ MonoBehaviour:
     <BehaviorTree id=\"0\" />\n          <PrioritySelectorNode id=\"6\" />\n         
     <RepeatDecorator id=\"12\" />\n        </data>\n      </_data>\n    </PrioritySelectorNode>\n   
     <ConditionEvalNode id=\"11\">\n      <_data>\n        <data breakpoint=\"0\"
-    selected=\"True\" position=\"146 476\" name=\"Perception/IsTargetClose\" description=\"Eval\"
+    selected=\"False\" position=\"146 476\" name=\"Perception/IsTargetClose\" description=\"Eval\"
     cardinality=\"1\" hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n         
     <ConditionEvalNode id=\"11\" />\n          <PrioritySelectorNode id=\"6\" />\n       
     </data>\n      </_data>\n    </ConditionEvalNode>\n    <ActionNode id=\"10\">\n     
