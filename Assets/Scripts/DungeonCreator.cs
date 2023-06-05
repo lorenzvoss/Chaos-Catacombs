@@ -31,8 +31,10 @@ public class DungeonCreator : MonoBehaviour
         CreateDungeon();
     }
 
-    private void CreateDungeon()
+    public void CreateDungeon()
     {
+        DestroyAllChildren();
+
         DungeonGenerator generator = new DungeonGenerator(dungeonWidth, dungeonLength);
         var listOfRooms = generator.CalculateDungeon(maxIterations, roomWidthMin, roomLengthMin,
             RoomBottomCornerModifier, RoomTopCornerModifier, RoomOffset, corridorWidht);
@@ -111,6 +113,7 @@ public class DungeonCreator : MonoBehaviour
         dungeonFloor.transform.localScale = Vector3.one;
         dungeonFloor.GetComponent<MeshFilter>().mesh = mesh;
         dungeonFloor.GetComponent<MeshRenderer>().material = material;
+        dungeonFloor.transform.parent = transform;
 
         for (int row =(int) bottomLeftV.x; row < (int) bottomRightV.x; row++)
         {
@@ -145,6 +148,17 @@ public class DungeonCreator : MonoBehaviour
         else
         {
             wallList.Add(point);
+        }
+    }
+
+    private void DestroyAllChildren()
+    {
+        while(transform.childCount != 0)
+        {
+            foreach(Transform item in transform)
+            {
+                DestroyImmediate(item.gameObject);
+            }
         }
     }
 }
