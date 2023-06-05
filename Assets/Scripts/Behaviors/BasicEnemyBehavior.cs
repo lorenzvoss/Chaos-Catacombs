@@ -11,12 +11,17 @@ public class BasicEnemyBehavior : MonoBehaviour
     private Renderer[] renderers;
     private Dictionary<Renderer, Color[]> originalEmissionColors = new Dictionary<Renderer, Color[]>();
     private float emissionIntensity = 1.5f; // Adjust the emission intensity as needed
+    private Vector3 lastPosition;
+    private Animator animator;
+
 
 
     private void Start()
     {
         currentHealth = maxHealth;
         renderers  = GetComponentsInChildren<Renderer>();
+        lastPosition = transform.position;
+        animator = gameObject.GetComponent<Animator>();
     }
     private void Update()
     {
@@ -24,6 +29,18 @@ public class BasicEnemyBehavior : MonoBehaviour
         {
             HitByBullet();
             isHit = false;
+        }
+
+        // Check if enemy is still alive
+        if (currentHealth <= 0)
+        {
+            animator.SetBool("isAlive", false);
+            Destroy(gameObject);
+        }
+
+        if(lastPosition != transform.position)
+        {
+            animator.SetBool("isWalking", true);
         }
     }
 
@@ -33,13 +50,6 @@ public class BasicEnemyBehavior : MonoBehaviour
         currentHealth -= 20;
         
         FlashRed();
-        
-        // Check if enemy is still alive
-        if (currentHealth <= 0)
-        {
-            Destroy(gameObject);
-        }
-        
     }
 
 
@@ -96,6 +106,10 @@ public class BasicEnemyBehavior : MonoBehaviour
 
         // Clear the dictionary of original emission colors
         originalEmissionColors.Clear();
+    }
+    private void DestroyGameObject()
+    {
+        Destroy(gameObject);
     }
 
 }
