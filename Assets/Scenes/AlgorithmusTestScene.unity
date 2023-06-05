@@ -177,6 +177,8 @@ MonoBehaviour:
   RoomBottomCornerModifier: 0
   RoomTopCornerModifier: 0
   RoomOffset: 0
+  wallVertical: {fileID: 8079539989346928297, guid: c348cb51311426d4fb99a7533004bcf6, type: 3}
+  wallHorizontal: {fileID: 1916726304420837088, guid: 2dc18d7e02822da4382139e07b33049b, type: 3}
 --- !u!1 &1364759464
 GameObject:
   m_ObjectHideFlags: 0
