@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;
+using System.Linq;
 using UnityEngine;
 
 public class DungeonGenerator
@@ -15,8 +16,8 @@ public class DungeonGenerator
         DungeonLength = length;
     }
 
-    public List<Node> CalculateRooms(int maxIterations, int roomWidthMin, int roomLengthMin, 
-        float roomBottomCornerModifier, float roomTopCornerModifier, int roomOffset)
+    public List<Node> CalculateDungeon(int maxIterations, int roomWidthMin, int roomLengthMin, 
+        float roomBottomCornerModifier, float roomTopCornerModifier, int roomOffset, int corridorWidth)
     {
         BinarySpacePartitioner partitioner = new BinarySpacePartitioner(DungeonWidht, DungeonLength);
         allSpaceNodes = partitioner.PrepareNodesCollection(maxIterations, roomWidthMin, roomLengthMin);
@@ -25,6 +26,10 @@ public class DungeonGenerator
         RoomGenerator roomGenerator = new RoomGenerator(maxIterations, roomLengthMin, roomWidthMin);
         List<RoomNode> roomList = roomGenerator.GenerateRoomsInGivenSpace(roomSpaces, roomBottomCornerModifier,
             roomTopCornerModifier, roomOffset);
-        return new List<Node>(roomList);
+
+        CorridorsGenerator corridorGenerator = new CorridorsGenerator();
+        var cooridorList = corridorGenerator.CreateCorridors(allSpaceNodes, corridorWidth);
+        
+        return new List<Node>(roomList).Concat(cooridorList).ToList();
     }
 }

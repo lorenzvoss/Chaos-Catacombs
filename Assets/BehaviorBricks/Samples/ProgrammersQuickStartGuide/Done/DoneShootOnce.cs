@@ -26,6 +26,11 @@ namespace BBSamples.PQSG // Programmers Quick Start Guide
         [InParam("bullet")]
         public GameObject bullet;
 
+        ///<value>Input target Parameter.</value>
+        // Define target at which will be shot.
+        [InParam("target")]
+        public GameObject target;
+
         ///<value>Input velocity Parameter, by deafult is 30f.</value>
         // Define the input parameter velocity, and provide a default
         // value of 30.0 when used as CONSTANT in the editor.
@@ -63,10 +68,19 @@ namespace BBSamples.PQSG // Programmers Quick Start Guide
             {
                 return TaskStatus.FAILED;
             }
+
+            Vector3 correctedTargetPosition = target.transform.position + new Vector3(0,0.75f,0);
+            
+            // Berechne den Vektor zwischen der Rakete und dem Spieler
+            Vector3 direction = correctedTargetPosition - gameObject.transform.position;
+
+            // Berechne die Rotation, um in Richtung des Spielers ausgerichtet zu sein 
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+
             // Instantiate the bullet prefab.
             GameObject newBullet = GameObject.Instantiate(
                                         bullet, shootPoint.position,
-                                        shootPoint.rotation * bullet.transform.rotation
+                                        targetRotation
                                     ) as GameObject;
             // Give it a velocity
             if (newBullet.GetComponent<Rigidbody>() == null)
@@ -74,7 +88,7 @@ namespace BBSamples.PQSG // Programmers Quick Start Guide
                 // prefab to set its weight.
                 newBullet.AddComponent<Rigidbody>();
 
-            newBullet.GetComponent<Rigidbody>().velocity = velocity * shootPoint.forward;
+            newBullet.GetComponent<Rigidbody>().velocity = direction;
             // The action is completed. We must inform the execution engine.
             return TaskStatus.COMPLETED;
         } // OnUpdate
