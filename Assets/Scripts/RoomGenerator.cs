@@ -21,11 +21,9 @@ public class RoomGenerator
         List<RoomNode> result = new List<RoomNode>();
         foreach(var space in roomSpaces)
         {
-            Vector2Int newBottomLeftPoint = StructureHelper.GenerateBottomLeftCornerBetween(
-                space.BottomLeftAreaCorner, space.TopRightAreaCorner, roomBottomCornerModifier, roomOffset);
+            Vector2Int newBottomLeftPoint = space.BottomLeftAreaCorner + new Vector2Int(2, 2);
 
-            Vector2Int newTopRightPoint = StructureHelper.GenerateBottomLeftCornerBetween(
-                space.BottomLeftAreaCorner, space.TopRightAreaCorner, roomTopCornerModifier, roomOffset);
+            Vector2Int newTopRightPoint = space.TopRightAreaCorner - new Vector2Int(2, 2);
 
             space.BottomLeftAreaCorner = newBottomLeftPoint;
             space.TopRightAreaCorner = newTopRightPoint;
