@@ -78,9 +78,9 @@ MonoBehaviour:
     <inputParams>\n        <inputValues>\n          <entry name=\"wanderArea\" type=\"UnityEngine.GameObject\"
     isBlackboard=\"True\" blackboard=\"wanderArea\" />\n        </inputValues>\n     
     </inputParams>\n      <outputParams />\n      <localParams />\n    </SubbehaviorNode>\n   
-    <ActionNode id=\"60\" action=\"MyActions/WaitAndWatch\">\n      <inputParams>\n       
+    <ActionNode id=\"60\" action=\"MyActions/ShootPreparation\">\n      <inputParams>\n       
     <inputValues>\n          <entry name=\"seconds\" type=\"System.Single\" isBlackboard=\"False\"
-    value=\"2\" />\n          <entry name=\"target\" type=\"UnityEngine.GameObject\"
+    value=\"1.5\" />\n          <entry name=\"target\" type=\"UnityEngine.GameObject\"
     isBlackboard=\"True\" blackboard=\"target\" />\n        </inputValues>\n     
     </inputParams>\n      <outputParams />\n      <localParams />\n    </ActionNode>\n   
     <ActionNode id=\"23\" action=\"Samples/ProgQuickStartGuide/ShootOnce\">\n     
@@ -157,12 +157,11 @@ MonoBehaviour:
     hasParent=\"False\">\n          <BehaviorTree id=\"0\" />\n          <SubbehaviorNode
     id=\"61\" />\n        </data>\n      </_data>\n    </SubbehaviorNode>\n    <ActionNode
     id=\"60\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"621.1102 635.5566\" name=\"MyActions/WaitAndWatch\" description=\"Action
-    that success after a period of time.\" cardinality=\"0\" hasParent=\"True\">\n         
-    <BehaviorTree id=\"40\" />\n          <ActionNode id=\"60\" />\n          <SequenceNode
-    id=\"40\" />\n        </data>\n      </_data>\n    </ActionNode>\n    <ActionNode
-    id=\"23\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"810.2728 634.9285\" name=\"Samples/ProgQuickStartGuide/ShootOnce\"
+    position=\"592.2214 636.6677\" name=\"MyActions/ShootPreparation\" description=\"Action
+    that success after a period of time.\" cardinality=\"0\" hasParent=\"False\">\n         
+    <BehaviorTree id=\"0\" />\n          <ActionNode id=\"60\" />\n        </data>\n     
+    </_data>\n    </ActionNode>\n    <ActionNode id=\"23\">\n      <_data>\n       
+    <data breakpoint=\"0\" selected=\"False\" position=\"810.2728 634.9285\" name=\"Samples/ProgQuickStartGuide/ShootOnce\"
     description=\"Clone a 'bullet' and shoots it throught the Forward axis with the
     specified velocity.\" cardinality=\"0\" hasParent=\"True\">\n          <BehaviorTree
     id=\"40\" />\n          <ActionNode id=\"23\" />\n          <SequenceNode id=\"40\"

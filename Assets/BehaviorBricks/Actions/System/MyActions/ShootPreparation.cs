@@ -10,9 +10,9 @@ namespace BBCore.Actions
     /// <summary>
     /// Implementation of the wait action using busy-waiting (spinning).
     /// </summary>
-    [Action("MyActions/WaitAndWatch")]
+    [Action("MyActions/ShootPreparation")]
     [Help("Action that success after a period of time.")]
-    public class WaitAndWatch : GOAction
+    public class ShootPreparation : GOAction
     {
         ///<value>Input Amount of time to wait (in seconds) Parameter.</value>
         [InParam("seconds", DefaultValue = 0.5f)]
@@ -27,10 +27,15 @@ namespace BBCore.Actions
         private float elapsedTime;
         private float movementDirection;
 
+        private Animator animator;
+
         /// <summary>Initialization Method of WaitForSeconds.</summary>
         /// <remarks>Initializes the elapsed time to 0.</remarks>
         public override void OnStart()
         {
+            animator = gameObject.GetComponent<Animator>();
+            animator.SetBool("isWalking", false);
+
             elapsedTime = 0;
             movementDirection = Random.Range(0, 2) == 0 ? -1 : 1;
         }

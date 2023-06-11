@@ -18,10 +18,15 @@ namespace BBUnity.Actions
 
         private UnityEngine.AI.NavMeshAgent navAgent;
 
+        private Animator animator;
+
         /// <summary>Initialization Method of MoveToPosition.</summary>
         /// <remarks>Check if there is a NavMeshAgent to assign a default one and assign the destination to the NavMeshAgent the given position.</remarks>
         public override void OnStart()
         {
+            animator = gameObject.GetComponent<Animator>();
+            animator.SetBool("isWalking", true);
+
             navAgent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
             if (navAgent == null)
             {

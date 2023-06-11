@@ -4,24 +4,30 @@ using UnityEngine;
 
 public class BasicEnemyBehavior : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public bool isHit = false;
+    public int maxHealth;
+    public bool isHit;
 
-    private int currentHealth;
-    private Renderer[] renderers;
-    private Dictionary<Renderer, Color[]> originalEmissionColors = new Dictionary<Renderer, Color[]>();
-    private float emissionIntensity = 1.5f; // Adjust the emission intensity as needed
-    private Vector3 lastPosition;
-    private Animator animator;
+    protected Renderer[] renderers;
+    protected int currentHealth;
+    protected Dictionary<Renderer, Color[]> originalEmissionColors = new Dictionary<Renderer, Color[]>();
+    protected float emissionIntensity = 1.5f; // Adjust the emission intensity as needed
+    protected Vector3 lastPosition;
+    protected Animator animator;
+    protected Rigidbody rb;
+    protected GameObject player;
 
 
 
     private void Start()
     {
+        maxHealth = 100;
         currentHealth = maxHealth;
         renderers  = GetComponentsInChildren<Renderer>();
         lastPosition = transform.position;
         animator = gameObject.GetComponent<Animator>();
+        rb = gameObject.GetComponent<Rigidbody>();
+        player = GameObject.FindWithTag("Player");
+        isHit = false;
     }
     private void Update()
     {
@@ -37,14 +43,9 @@ public class BasicEnemyBehavior : MonoBehaviour
             animator.SetBool("isAlive", false);
             Destroy(gameObject);
         }
-
-        if(lastPosition != transform.position)
-        {
-            animator.SetBool("isWalking", true);
-        }
     }
 
-    private void HitByBullet()
+    public void HitByBullet()
     {
         // Decrease current health
         currentHealth -= 20;
@@ -53,7 +54,7 @@ public class BasicEnemyBehavior : MonoBehaviour
     }
 
 
-    private void FlashRed()
+    public void FlashRed()
     {
         // Save the original emission colors if they haven't been stored yet
         if (originalEmissionColors.Count == 0)
@@ -86,7 +87,7 @@ public class BasicEnemyBehavior : MonoBehaviour
         StartCoroutine(ResetEmissionAfterDelay(0.11f)); // Adjust the delay as needed
     }
 
-    private IEnumerator ResetEmissionAfterDelay(float delay)
+    public IEnumerator ResetEmissionAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
 
@@ -106,10 +107,6 @@ public class BasicEnemyBehavior : MonoBehaviour
 
         // Clear the dictionary of original emission colors
         originalEmissionColors.Clear();
-    }
-    private void DestroyGameObject()
-    {
-        Destroy(gameObject);
     }
 
 }

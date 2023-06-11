@@ -126,6 +126,8 @@ public class Projectile : MonoBehaviour {
 			//Toggle "isHit" on target object
 			collision.transform.gameObject.GetComponent
 				<BasicEnemyBehavior>().isHit = true;
+			collision.transform.gameObject.GetComponent
+				<Enemy_Large_Behavior>().isHit = true;
 			//Destroy bullet object
 			Destroy(gameObject);
 		}

@@ -20,10 +20,15 @@ namespace BBUnity.Actions
 
         private Transform targetTransform;
 
+        private Animator animator;
+
         /// <summary>Initialization Method of MoveToGameObject.</summary>
         /// <remarks>Check if GameObject object exists and NavMeshAgent, if there is no NavMeshAgent, the default one is added.</remarks>
         public override void OnStart()
         {
+            animator = gameObject.GetComponent<Animator>();
+            animator.SetBool("isWalking", true);
+
             if (target == null)
             {
                 Debug.LogError("The movement target of this game object is null", gameObject);

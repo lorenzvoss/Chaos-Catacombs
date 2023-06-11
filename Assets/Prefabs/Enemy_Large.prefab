@@ -104,8 +104,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1128213077877904246}
   - component: {fileID: 1128213077877904242}
-  - component: {fileID: 1128213077877904252}
   - component: {fileID: 1128213077877904245}
+  - component: {fileID: 858267988880751100}
   m_Layer: 0
   m_Name: Enemy_Large
   m_TagString: Enemy
@@ -147,20 +147,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &1128213077877904252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1128213077877904254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fd1feed5d570406da919b9deba36fca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  isHit: 0
 --- !u!135 &1128213077877904245
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -174,6 +160,23 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &858267988880751100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128213077877904254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: debfae5c1720f459ca64af109c736dc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  isHit: 0
+  isStunned: 0
+  hitThePlayerInLast2Sec: 0
+  hitThePlayerTimer: 0
 --- !u!1 &1128213077884983945
 GameObject:
   m_ObjectHideFlags: 0
