@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using UnityEngine;
 
 public class DungeonCreator : MonoBehaviour
@@ -20,10 +21,13 @@ public class DungeonCreator : MonoBehaviour
     public int RoomOffset;
 
     public GameObject wallVertical, wallHorizontal;
+
     List<Vector3Int> possibleDoorVerticalPosition;
     List<Vector3Int> possibleDoorHorizontalPosition;
     List<Vector3Int> possibleWallHorizontalPosition;
     List<Vector3Int> possibleWallVerticalPosition;
+
+    public GameObject PlayerPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -31,13 +35,19 @@ public class DungeonCreator : MonoBehaviour
         CreateDungeon();
     }
 
+    /// <summary>
+    /// Erstellt Dungeon inklusive Boden, Waenden, (work in progress) Spieler, (work in progress)Gegnern
+    /// </summary>
     public void CreateDungeon()
     {
         DestroyAllChildren();
 
         DungeonGenerator generator = new DungeonGenerator(dungeonWidth, dungeonLength);
-        var listOfRooms = generator.CalculateDungeon(maxIterations, roomWidthMin, roomLengthMin,
-            RoomBottomCornerModifier, RoomTopCornerModifier, RoomOffset, corridorWidht);
+        var listOfRooms = generator.CalculateDungeonRooms(maxIterations, roomWidthMin, roomLengthMin,
+            RoomBottomCornerModifier, RoomTopCornerModifier, RoomOffset);
+        var listOfCorridors = generator.CalculateDungeonCorridors(corridorWidht);
+
+        var dungeonList = listOfRooms.Concat(listOfCorridors).ToList();
 
         GameObject wallParent = new GameObject("WallParent");
         wallParent.transform.parent = transform;
@@ -47,12 +57,39 @@ public class DungeonCreator : MonoBehaviour
         possibleWallHorizontalPosition = new List<Vector3Int>();
         possibleWallVerticalPosition = new List<Vector3Int>();
 
-        for (int i = 0; i < listOfRooms.Count; i++)
+        for (int i = 0; i < dungeonList.Count; i++)
         {
-            CreateMesh(listOfRooms[i].BottomLeftAreaCorner, listOfRooms[i].TopRightAreaCorner);
+            CreateMesh(dungeonList[i].BottomLeftAreaCorner, dungeonList[i].TopRightAreaCorner);
         }
         
         CreateWalls(wallParent);
+
+        int startRoomIndex = SpawnPlayer(listOfRooms);
+    }
+
+    private int SpawnPlayer(List<Node> listOfRooms)
+    {
+        //Zufälliger Startraum fuer Spieler
+        int startRoomIndex = UnityEngine.Random.Range(0, listOfRooms.Count - 1);
+
+        //Mittelpunkt als Spawnpoint setzen
+        Node spawnRoom = listOfRooms[startRoomIndex];
+        Debug.Log("Index Spawn Raum :" + startRoomIndex);
+        Debug.Log("Spawn Room TopRightCorner:" + spawnRoom.TopRightAreaCorner);
+        Debug.Log("Spawn Room BottomLeftCorner:" + spawnRoom.BottomLeftAreaCorner);
+        
+        Vector3Int middlePoint = new Vector3Int(
+            (spawnRoom.TopRightAreaCorner.x + spawnRoom.BottomLeftAreaCorner.x) / 2,
+            0,
+            (spawnRoom.TopRightAreaCorner.y + spawnRoom.BottomLeftAreaCorner.y) / 2);
+
+        Debug.Log("Berechneter Mittelpunkt: " + middlePoint);
+
+        //Spielerprefab spawnen
+        Instantiate(PlayerPrefab, middlePoint, Quaternion.identity, this.transform);
+
+        //Startraum Index zurueckgeben
+        return startRoomIndex;
     }
 
     private void CreateWalls(GameObject wallParent)
