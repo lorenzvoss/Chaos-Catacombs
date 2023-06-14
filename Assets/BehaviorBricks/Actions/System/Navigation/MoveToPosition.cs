@@ -47,9 +47,14 @@ namespace BBUnity.Actions
         /// and otherwise it will remain in operation.</remarks>
         public override TaskStatus OnUpdate()
         {
+            if (!navAgent.pathPending && navAgent.remainingDistance <= navAgent.stoppingDistance + 0.7f)
+            {    
+                animator.SetBool("isWalking", false);
+            }
             if (!navAgent.pathPending && navAgent.remainingDistance <= navAgent.stoppingDistance)
+            {    
                 return TaskStatus.COMPLETED;
-
+            }
             return TaskStatus.RUNNING;
         }
 

@@ -33,7 +33,7 @@ namespace BBCore.Actions
         {
             elapsedTime += Time.deltaTime;
             if (elapsedTime >= seconds)
-            {   Debug.Log("Wait is completed");
+            {   
                 return TaskStatus.COMPLETED;
             }
             return TaskStatus.RUNNING;

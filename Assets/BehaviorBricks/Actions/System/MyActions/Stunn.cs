@@ -21,6 +21,7 @@ namespace BBCore.Actions
         private float stunnTimer;
         private bool stunnTheEnemy;
         private Rigidbody rb;
+        private float leftVelocity;
         
 
         /// <summary>Initialization Method of WaitForSeconds.</summary>
@@ -30,7 +31,6 @@ namespace BBCore.Actions
             Debug.Log("Stunn Komponente erreicht");
             rb = gameObject.GetComponent<Rigidbody>();
             rb.isKinematic = true;
-            rb.velocity = Vector3.zero;
             stunnTimer = stunnTime;
             stunnTheEnemy = !gameObject.GetComponent<Enemy_Large_Behavior>().hitThePlayerInLastXSec;
         }
@@ -39,7 +39,6 @@ namespace BBCore.Actions
         /// <remarks>Increase the elapsed time and check if you have exceeded the waiting time has ended.</remarks>
         public override TaskStatus OnUpdate()
         {
-            Debug.Log(stunnTheEnemy);
             if(stunnTheEnemy && stunnTimer >= 0)
             {
                 stunnTimer -= Time.deltaTime;
@@ -47,8 +46,8 @@ namespace BBCore.Actions
                 return TaskStatus.RUNNING;
             }
             else{
-                gameObject.GetComponent<Enemy_Large_Behavior>().hitThePlayerInLastXSec = !stunnTheEnemy;
-                Debug.Log("Stunn COMPLETED");
+                gameObject.GetComponent<Enemy_Large_Behavior>().hitThePlayerInLastXSec = false;
+                Debug.Log("Stunn COMPLETED: " + Time.time);
                 return TaskStatus.COMPLETED;
             }
         }

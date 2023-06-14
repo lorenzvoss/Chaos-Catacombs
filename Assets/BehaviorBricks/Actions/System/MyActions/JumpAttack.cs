@@ -21,8 +21,8 @@ namespace BBCore.Actions
         
         private Vector3 lastPlayerPosition;
         private Rigidbody rb;
-        private float timer;
-        private float oldTimer;
+        private float jumpTimer;
+        private float finishTime;
 
 
 
@@ -32,9 +32,10 @@ namespace BBCore.Actions
         // Initialization method. If not established, we look for the shooting point.
         public override void OnStart()
         {
+            jumpTimer = 0f;
+            finishTime = 2f;
             rb = gameObject.GetComponent<Rigidbody>();
             rb.isKinematic = false;
-            timer = 0f;
 
             // Speichere die Position des Spielers
             lastPlayerPosition = target.transform.position;
@@ -49,7 +50,17 @@ namespace BBCore.Actions
 
         public override TaskStatus OnUpdate()
         {            
-            return TaskStatus.COMPLETED; 
+            jumpTimer += Time.deltaTime;
+
+            if(jumpTimer >= finishTime)
+            {
+                rb.isKinematic = true;
+                gameObject.GetComponent<Enemy_Large_Behavior>().jumpAttackFinished = true;
+                Debug.Log("JumpAttackFinished wurde auf true gesetzt!");
+                return TaskStatus.COMPLETED;
+            }
+            
+            return TaskStatus.RUNNING;
         }  
 
 

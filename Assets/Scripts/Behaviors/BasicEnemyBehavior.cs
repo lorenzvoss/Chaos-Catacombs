@@ -45,7 +45,7 @@ public class BasicEnemyBehavior : MonoBehaviour
         }
     }
 
-    public void HitByBullet()
+    public virtual void HitByBullet()
     {
         // Decrease current health
         currentHealth -= 20;

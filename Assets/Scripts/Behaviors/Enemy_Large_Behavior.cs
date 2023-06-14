@@ -7,6 +7,8 @@ public class Enemy_Large_Behavior : BasicEnemyBehavior
     public bool isStunned;
     public bool hitThePlayerInLastXSec;
     public float hitThePlayerTimer;
+    public bool jumpAttackFinished;
+    private float stunnDuration;
 
     // Start is called before the first frame update
     void Start()
@@ -17,9 +19,10 @@ public class Enemy_Large_Behavior : BasicEnemyBehavior
         animator = gameObject.GetComponent<Animator>();
         rb = gameObject.GetComponent<Rigidbody>();
         player = GameObject.FindWithTag("Player");
-
-        hitThePlayerTimer = 1.5f;
+        jumpAttackFinished = false;
         hitThePlayerInLastXSec = false;
+        stunnDuration = 2f;
+        isStunned = false;
     }
 
     // Update is called once per frame
@@ -37,6 +40,15 @@ public class Enemy_Large_Behavior : BasicEnemyBehavior
             animator.SetBool("isAlive", false);
             Destroy(gameObject);
         }
+
+        if(jumpAttackFinished && !hitThePlayerInLastXSec)
+        {
+            Debug.Log("BTree wurde deaktiviert!");
+            isStunned = true;
+            Invoke("EnableBehaviorTree", stunnDuration); 
+            gameObject.GetComponent<BehaviorExecutor>().enabled = false;
+            jumpAttackFinished = false;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -44,8 +56,21 @@ public class Enemy_Large_Behavior : BasicEnemyBehavior
         if (collision.gameObject.CompareTag("Player"))
         {
             hitThePlayerInLastXSec = true;
-            hitThePlayerTimer = 1.5f;
-            Debug.Log("Hit the Player is true");
+            rb.isKinematic = true;
         }
+    }
+
+    private void EnableBehaviorTree()
+    {
+        gameObject.GetComponent<BehaviorExecutor>().enabled = true;
+        isStunned = false;
+        Debug.Log("BehaviorTree wurde wieder aktiviert!");
+    }
+
+    public override void HitByBullet()
+    {
+        currentHealth -= isStunned ? 20:1;
+        
+        FlashRed();
     }
 }
