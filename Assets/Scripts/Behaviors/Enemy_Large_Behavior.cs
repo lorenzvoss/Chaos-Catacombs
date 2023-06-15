@@ -43,7 +43,6 @@ public class Enemy_Large_Behavior : BasicEnemyBehavior
 
         if(jumpAttackFinished && !hitThePlayerInLastXSec)
         {
-            Debug.Log("BTree wurde deaktiviert!");
             isStunned = true;
             Invoke("EnableBehaviorTree", stunnDuration); 
             gameObject.GetComponent<BehaviorExecutor>().enabled = false;
@@ -56,6 +55,7 @@ public class Enemy_Large_Behavior : BasicEnemyBehavior
         if (collision.gameObject.CompareTag("Player"))
         {
             hitThePlayerInLastXSec = true;
+            Invoke("ResetHitPlayer", 2);
             rb.isKinematic = true;
         }
     }
@@ -64,7 +64,6 @@ public class Enemy_Large_Behavior : BasicEnemyBehavior
     {
         gameObject.GetComponent<BehaviorExecutor>().enabled = true;
         isStunned = false;
-        Debug.Log("BehaviorTree wurde wieder aktiviert!");
     }
 
     public override void HitByBullet()
@@ -72,5 +71,10 @@ public class Enemy_Large_Behavior : BasicEnemyBehavior
         currentHealth -= isStunned ? 20:1;
         
         FlashRed();
+    }
+
+    public void ResetHitPlayer()
+    {
+        hitThePlayerInLastXSec = false;
     }
 }

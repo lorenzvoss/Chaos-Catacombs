@@ -17,7 +17,7 @@ namespace BBCore.Actions
         [InParam("target")]
         public GameObject target;
 
-        public float jumpForce = 1500f;
+        public float jumpForce = 2100f;
         
         private Vector3 lastPlayerPosition;
         private Rigidbody rb;
@@ -33,7 +33,7 @@ namespace BBCore.Actions
         public override void OnStart()
         {
             jumpTimer = 0f;
-            finishTime = 2f;
+            finishTime = 1.5f;
             rb = gameObject.GetComponent<Rigidbody>();
             rb.isKinematic = false;
 
@@ -56,7 +56,6 @@ namespace BBCore.Actions
             {
                 rb.isKinematic = true;
                 gameObject.GetComponent<Enemy_Large_Behavior>().jumpAttackFinished = true;
-                Debug.Log("JumpAttackFinished wurde auf true gesetzt!");
                 return TaskStatus.COMPLETED;
             }
             

@@ -11,6 +11,8 @@ TagManager:
   - Target
   - Concrete
   - Enemy
+  - Rocket
+  - Enemy_Large
   layers:
   - Default
   - TransparentFX

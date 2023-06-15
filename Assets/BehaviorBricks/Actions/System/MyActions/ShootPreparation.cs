@@ -45,7 +45,7 @@ namespace BBCore.Actions
         public override TaskStatus OnUpdate()
         {
             gameObject.transform.LookAt(target.transform);
-            float translation = 1.5f * movementDirection * Time.deltaTime;
+            float translation = 2.5f * movementDirection * Time.deltaTime;
             gameObject.transform.Translate(translation, 0f, 0f);
             elapsedTime += Time.deltaTime;
             if (elapsedTime >= seconds)

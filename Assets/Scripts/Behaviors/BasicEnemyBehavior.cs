@@ -20,7 +20,7 @@ public class BasicEnemyBehavior : MonoBehaviour
 
     private void Start()
     {
-        maxHealth = 100;
+        maxHealth = 90;
         currentHealth = maxHealth;
         renderers  = GetComponentsInChildren<Renderer>();
         lastPosition = transform.position;
@@ -48,7 +48,7 @@ public class BasicEnemyBehavior : MonoBehaviour
     public virtual void HitByBullet()
     {
         // Decrease current health
-        currentHealth -= 20;
+        currentHealth -= 30;
         
         FlashRed();
     }

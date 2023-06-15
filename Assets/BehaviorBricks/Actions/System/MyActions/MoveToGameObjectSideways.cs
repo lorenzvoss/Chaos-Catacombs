@@ -22,6 +22,8 @@ namespace BBUnity.Actions
 
         private Transform gameObjectTransform;
 
+        private Animator animator;
+
         private float nextJumpTime;
         private bool isMovingRight;
 
@@ -35,7 +37,8 @@ namespace BBUnity.Actions
                 return;
             }
             targetTransform = target.transform;
-
+            animator = gameObject.GetComponent<Animator>();
+            animator.SetBool("isWalking", true);
             navAgent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
             if (navAgent == null)
             {
@@ -50,7 +53,7 @@ namespace BBUnity.Actions
                 navAgent.Resume();
             #endif
 
-            nextJumpTime = Time.time + Random.Range(1.5f, 2.5f);
+            nextJumpTime = Time.time + Random.Range(1f, 2f);
             isMovingRight = true;
         }
 
