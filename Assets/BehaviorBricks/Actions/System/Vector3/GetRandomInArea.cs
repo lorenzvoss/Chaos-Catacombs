@@ -59,6 +59,7 @@ namespace BBUnity.Actions
                     Debug.LogError("The " + area + " GameObject must have a Box Collider or a Sphere Collider component", gameObject);
                 }
             }
+            Debug.Log(randomPosition);
         }
 
         /// <summary>Abort method of GetRandomInArea.</summary>

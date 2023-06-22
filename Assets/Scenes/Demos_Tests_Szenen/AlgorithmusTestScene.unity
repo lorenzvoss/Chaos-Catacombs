@@ -178,9 +178,11 @@ MonoBehaviour:
   RoomBottomCornerModifier: 0
   RoomTopCornerModifier: 0
   RoomOffset: 0
+  roomObjects: []
   wallVertical: {fileID: 8079539989346928297, guid: c348cb51311426d4fb99a7533004bcf6, type: 3}
   wallHorizontal: {fileID: 1916726304420837088, guid: 2dc18d7e02822da4382139e07b33049b, type: 3}
   PlayerPrefab: {fileID: 8852933529317200788, guid: 5f8ea9f7a1a857f4e908093a201c0b80, type: 3}
+  enemy: {fileID: 0}
 --- !u!114 &802172226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +190,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 802172221}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
   m_Name: 

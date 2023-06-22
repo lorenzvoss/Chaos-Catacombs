@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class DungeonCreator : MonoBehaviour
 {
@@ -20,6 +22,8 @@ public class DungeonCreator : MonoBehaviour
     [Range(0, 2)]
     public int RoomOffset;
 
+    public List<GameObject> roomObjects;
+
     public GameObject wallVertical, wallHorizontal;
 
     List<Vector3Int> possibleDoorVerticalPosition;
@@ -28,11 +32,12 @@ public class DungeonCreator : MonoBehaviour
     List<Vector3Int> possibleWallVerticalPosition;
 
     public GameObject PlayerPrefab;
+    public GameObject enemy;
 
     // Start is called before the first frame update
     void Start()
     {
-        CreateDungeon();
+        //CreateDungeon();
     }
 
     /// <summary>
@@ -49,7 +54,7 @@ public class DungeonCreator : MonoBehaviour
 
         GameObject wallParent = new GameObject("WallParent");
         wallParent.transform.parent = transform;
-        
+
         GameObject corridorParent = new GameObject("DungeonCorridors");
         GameObject roomsParent = new GameObject("RoomParent");
         roomsParent.transform.parent = transform;
@@ -70,29 +75,38 @@ public class DungeonCreator : MonoBehaviour
             CreateMesh(listOfCorridors[i].BottomLeftAreaCorner, listOfCorridors[i].TopRightAreaCorner, corridorParent);
         }
 
-        
+
         CreateWalls(wallParent);
 
+
+        UnityEngine.AI.NavMeshSurface nav = GetComponent<NavMeshSurface>();
+        nav.BuildNavMesh();
+
         int startRoomIndex = SpawnPlayer(listOfRooms);
+
     }
 
     private int SpawnPlayer(List<Node> listOfRooms)
     {
         //Zuf�lliger Startraum fuer Spieler
         int startRoomIndex = UnityEngine.Random.Range(0, listOfRooms.Count - 1);
-
+        
         //Mittelpunkt als Spawnpoint setzen
         Node spawnRoom = listOfRooms[startRoomIndex];
         Debug.Log("Index Spawn Raum :" + startRoomIndex);
         Debug.Log("Spawn Room TopRightCorner:" + spawnRoom.TopRightAreaCorner);
         Debug.Log("Spawn Room BottomLeftCorner:" + spawnRoom.BottomLeftAreaCorner);
-        
+
         Vector3Int middlePoint = new Vector3Int(
             (spawnRoom.TopRightAreaCorner.x + spawnRoom.BottomLeftAreaCorner.x) / 2,
             0,
             (spawnRoom.TopRightAreaCorner.y + spawnRoom.BottomLeftAreaCorner.y) / 2);
 
         Debug.Log("Berechneter Mittelpunkt: " + middlePoint);
+
+        enemy.GetComponent<BehaviorExecutor>().SetBehaviorParam("target", PlayerPrefab);
+        enemy.GetComponent<BehaviorExecutor>().SetBehaviorParam("wanderArea", roomObjects[startRoomIndex]);
+        Instantiate(enemy, middlePoint, Quaternion.identity, this.transform);
 
         //Spielerprefab spawnen
         Instantiate(PlayerPrefab, middlePoint, Quaternion.identity, this.transform);
@@ -105,11 +119,11 @@ public class DungeonCreator : MonoBehaviour
     {
         foreach (var wallPosition in possibleWallHorizontalPosition)
         {
-            CreateWall(wallParent, new Vector3((float) (wallPosition.x + 0.5), (float)(wallPosition.y + 1), wallPosition.z), wallHorizontal);
+            CreateWall(wallParent, new Vector3((float)(wallPosition.x + 0.5), (float)(wallPosition.y + 1), wallPosition.z), wallHorizontal);
         }
-        foreach(var wallPosition in possibleWallVerticalPosition)
+        foreach (var wallPosition in possibleWallVerticalPosition)
         {
-            CreateWall(wallParent, new Vector3(wallPosition.x, (float) (wallPosition.y + 1), (float) (wallPosition.z + 0.5)), wallVertical);
+            CreateWall(wallParent, new Vector3(wallPosition.x, (float)(wallPosition.y + 1), (float)(wallPosition.z + 0.5)), wallVertical);
         }
     }
 
@@ -152,7 +166,6 @@ public class DungeonCreator : MonoBehaviour
         mesh.vertices = vertices;
         mesh.uv = uvs;
         mesh.triangles = triangles;
-        
 
         GameObject dungeonFloor = new GameObject("Mesh" + bottomLeftCorner, typeof(MeshFilter), typeof(MeshRenderer));
 
@@ -161,18 +174,19 @@ public class DungeonCreator : MonoBehaviour
         dungeonFloor.GetComponent<MeshFilter>().mesh = mesh;
         dungeonFloor.GetComponent<MeshRenderer>().material = material;
         dungeonFloor.transform.parent = parentObject.transform;
+        dungeonFloor.AddComponent<BoxCollider>();
 
-        for (int row =(int) bottomLeftV.x; row < (int) bottomRightV.x; row++)
+        for (int row = (int)bottomLeftV.x; row < (int)bottomRightV.x; row++)
         {
             var wallPosition = new Vector3(row, 0, bottomLeftV.z);
             AddWallPositionToList(wallPosition, possibleWallHorizontalPosition, possibleDoorHorizontalPosition);
         }
-        for(int row =(int) topLeftV.x; row < (int) topRightCorner.x; row++)
+        for (int row = (int)topLeftV.x; row < (int)topRightCorner.x; row++)
         {
             var wallPosition = new Vector3(row, 0, topRightV.z);
             AddWallPositionToList(wallPosition, possibleWallHorizontalPosition, possibleDoorHorizontalPosition);
         }
-        for (int col = (int) bottomLeftV.z; col < (int) topLeftV.z; col++)
+        for (int col = (int)bottomLeftV.z; col < (int)topLeftV.z; col++)
         {
             var wallPosition = new Vector3(bottomLeftV.x, 0, col);
             AddWallPositionToList(wallPosition, possibleWallVerticalPosition, possibleDoorVerticalPosition);
@@ -181,6 +195,11 @@ public class DungeonCreator : MonoBehaviour
         {
             var wallPosition = new Vector3(bottomRightV.x, 0, col);
             AddWallPositionToList(wallPosition, possibleWallVerticalPosition, possibleDoorVerticalPosition);
+        }
+        
+        if(parentObject.name == "RoomParent")
+        {
+            roomObjects.Add(dungeonFloor);
         }
     }
 
@@ -201,10 +220,10 @@ public class DungeonCreator : MonoBehaviour
     private void DestroyAllChildren()
     {
         DestroyImmediate(GameObject.Find("DungeonCorridors"));
-        
-        while(transform.childCount != 0)
+
+        while (transform.childCount != 0)
         {
-            foreach(Transform item in transform)
+            foreach (Transform item in transform)
             {
                 DestroyImmediate(item.gameObject);
             }
