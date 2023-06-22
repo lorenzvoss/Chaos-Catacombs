@@ -36,7 +36,7 @@ public class DungeonCreator : MonoBehaviour
     }
 
     /// <summary>
-    /// Erstellt Dungeon inklusive Boden, Waenden, (work in progress) Spieler, (work in progress)Gegnern
+    /// Erstellt Dungeon inklusive Boden, Waenden, Spieler, (work in progress)Gegnern
     /// </summary>
     public void CreateDungeon()
     {
@@ -47,20 +47,29 @@ public class DungeonCreator : MonoBehaviour
             RoomBottomCornerModifier, RoomTopCornerModifier, RoomOffset);
         var listOfCorridors = generator.CalculateDungeonCorridors(corridorWidht);
 
-        var dungeonList = listOfRooms.Concat(listOfCorridors).ToList();
-
         GameObject wallParent = new GameObject("WallParent");
         wallParent.transform.parent = transform;
+        
+        GameObject corridorParent = new GameObject("DungeonCorridors");
+        GameObject roomsParent = new GameObject("RoomParent");
+        roomsParent.transform.parent = transform;
 
         possibleDoorVerticalPosition = new List<Vector3Int>();
         possibleDoorHorizontalPosition = new List<Vector3Int>();
         possibleWallHorizontalPosition = new List<Vector3Int>();
         possibleWallVerticalPosition = new List<Vector3Int>();
 
-        for (int i = 0; i < dungeonList.Count; i++)
+        //GameObjects fuer Raeume erstellen
+        for (int i = 0; i < listOfRooms.Count; i++)
         {
-            CreateMesh(dungeonList[i].BottomLeftAreaCorner, dungeonList[i].TopRightAreaCorner);
+            CreateMesh(listOfRooms[i].BottomLeftAreaCorner, listOfRooms[i].TopRightAreaCorner, roomsParent);
         }
+        //GameObjects fuer Gaenge erstellen
+        for (int i = 0; i < listOfCorridors.Count; i++)
+        {
+            CreateMesh(listOfCorridors[i].BottomLeftAreaCorner, listOfCorridors[i].TopRightAreaCorner, corridorParent);
+        }
+
         
         CreateWalls(wallParent);
 
@@ -109,7 +118,7 @@ public class DungeonCreator : MonoBehaviour
         Instantiate(wallPrefab, wallPosition, Quaternion.identity, wallParent.transform);
     }
 
-    private void CreateMesh(Vector2 bottomLeftCorner, Vector2 topRightCorner)
+    private void CreateMesh(Vector2 bottomLeftCorner, Vector2 topRightCorner, GameObject parentObject)
     {
         Vector3 bottomLeftV = new Vector3(bottomLeftCorner.x, 0, bottomLeftCorner.y);
         Vector3 bottomRightV = new Vector3(topRightCorner.x, 0, bottomLeftCorner.y);
@@ -151,7 +160,7 @@ public class DungeonCreator : MonoBehaviour
         dungeonFloor.transform.localScale = Vector3.one;
         dungeonFloor.GetComponent<MeshFilter>().mesh = mesh;
         dungeonFloor.GetComponent<MeshRenderer>().material = material;
-        dungeonFloor.transform.parent = transform;
+        dungeonFloor.transform.parent = parentObject.transform;
 
         for (int row =(int) bottomLeftV.x; row < (int) bottomRightV.x; row++)
         {
@@ -191,6 +200,8 @@ public class DungeonCreator : MonoBehaviour
 
     private void DestroyAllChildren()
     {
+        DestroyImmediate(GameObject.Find("DungeonCorridors"));
+        
         while(transform.childCount != 0)
         {
             foreach(Transform item in transform)
