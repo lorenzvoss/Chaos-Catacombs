@@ -69,7 +69,7 @@ public class DungeonCreator : MonoBehaviour
 
     private int SpawnPlayer(List<Node> listOfRooms)
     {
-        //Zufälliger Startraum fuer Spieler
+        //Zufï¿½lliger Startraum fuer Spieler
         int startRoomIndex = UnityEngine.Random.Range(0, listOfRooms.Count - 1);
 
         //Mittelpunkt als Spawnpoint setzen
@@ -143,6 +143,7 @@ public class DungeonCreator : MonoBehaviour
         mesh.vertices = vertices;
         mesh.uv = uvs;
         mesh.triangles = triangles;
+        
 
         GameObject dungeonFloor = new GameObject("Mesh" + bottomLeftCorner, typeof(MeshFilter), typeof(MeshRenderer));
 
