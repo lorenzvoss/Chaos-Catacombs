@@ -60,6 +60,8 @@ namespace BBUnity.Actions
                 }
             }
             Debug.Log(randomPosition);
+            GameObject.Find("Kontrollpunkt").transform.position = randomPosition;
+
         }
 
         /// <summary>Abort method of GetRandomInArea.</summary>

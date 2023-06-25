@@ -46,6 +46,7 @@ public class DungeonCreator : MonoBehaviour
     public void CreateDungeon()
     {
         DestroyAllChildren();
+        roomObjects.Clear();
 
         DungeonGenerator generator = new DungeonGenerator(dungeonWidth, dungeonLength);
         var listOfRooms = generator.CalculateDungeonRooms(maxIterations, roomWidthMin, roomLengthMin,
@@ -104,13 +105,14 @@ public class DungeonCreator : MonoBehaviour
 
         Debug.Log("Berechneter Mittelpunkt: " + middlePoint);
 
-        enemy.GetComponent<BehaviorExecutor>().SetBehaviorParam("target", PlayerPrefab);
-        enemy.GetComponent<BehaviorExecutor>().SetBehaviorParam("wanderArea", roomObjects[startRoomIndex]);
-        Instantiate(enemy, middlePoint, Quaternion.identity, this.transform);
+
+        GameObject enemy_2Legs = Instantiate(enemy, middlePoint, Quaternion.identity, this.transform); 
+        enemy_2Legs.GetComponent<BehaviorExecutor>().SetBehaviorParam("wanderArea", roomObjects[startRoomIndex]);
 
         //Spielerprefab spawnen
-        Instantiate(PlayerPrefab, middlePoint, Quaternion.identity, this.transform);
-
+        GameObject player = Instantiate(PlayerPrefab, middlePoint, Quaternion.identity, this.transform);
+        enemy_2Legs.GetComponent<BehaviorExecutor>().SetBehaviorParam("target", player);
+        player.AddComponent<PlayerHealth>(); 
         //Startraum Index zurueckgeben
         return startRoomIndex;
     }
@@ -169,10 +171,24 @@ public class DungeonCreator : MonoBehaviour
 
         GameObject dungeonFloor = new GameObject("Mesh" + bottomLeftCorner, typeof(MeshFilter), typeof(MeshRenderer));
 
+        Vector3 center = Vector3.zero;
+        foreach(Vector3 vertice in vertices){
+            center += vertice;
+        }
+        center /= vertices.Length;
+        GameObject centerOfFloor = GameObject.CreatePrimitive(PrimitiveType.Plane);
+        centerOfFloor.transform.position = center;
+        centerOfFloor.transform.parent = dungeonFloor.transform;
+        centerOfFloor.AddComponent<BoxCollider>();
+        Bounds bounds = mesh.bounds;
+        centerOfFloor.transform.localScale = bounds.size / 10;
+
+
         dungeonFloor.transform.position = Vector3.zero;
         dungeonFloor.transform.localScale = Vector3.one;
         dungeonFloor.GetComponent<MeshFilter>().mesh = mesh;
         dungeonFloor.GetComponent<MeshRenderer>().material = material;
+        dungeonFloor.GetComponent<MeshRenderer>().enabled = false;
         dungeonFloor.transform.parent = parentObject.transform;
         dungeonFloor.AddComponent<BoxCollider>();
 
@@ -199,7 +215,7 @@ public class DungeonCreator : MonoBehaviour
         
         if(parentObject.name == "RoomParent")
         {
-            roomObjects.Add(dungeonFloor);
+            roomObjects.Add(centerOfFloor);
         }
     }
 

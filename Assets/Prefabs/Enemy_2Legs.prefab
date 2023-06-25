@@ -931,7 +931,7 @@ MonoBehaviour:
     boolParamsNames: []
     boolParamsLostDefaultValue: 
     floatParams:
-    - 15
+    - 0
     floatParamsNames:
     - closeDistance
     floatParamsLostDefaultValue: 

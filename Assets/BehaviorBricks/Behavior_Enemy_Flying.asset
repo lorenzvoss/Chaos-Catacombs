@@ -111,58 +111,58 @@ MonoBehaviour:
     <ConditionEvalNode id=\"62\" />\n          <ActionNode id=\"63\" />\n         
     <ConditionEvalNode id=\"64\" />\n        </nodes>\n      </_nodes>\n    </BehaviorTree>\n   
     <RepeatDecorator id=\"1\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"745.8361 -70.2068\" name=\"Repeat\" description=\"Repeats the execution
+    position=\"1782.336 144.7932\" name=\"Repeat\" description=\"Repeats the execution
     of its child node\" cardinality=\"1\" hasParent=\"False\">\n          <BehaviorTree
     id=\"0\" />\n          <RepeatDecorator id=\"1\" />\n        </data>\n      </_data>\n   
     </RepeatDecorator>\n    <PrioritySelectorNode id=\"17\">\n      <_data>\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"697.868 163.2143\" name=\"Priority
+    <data breakpoint=\"0\" selected=\"False\" position=\"1734.368 378.2143\" name=\"Priority
     Selector\" description=\"\" cardinality=\"1\" hasParent=\"True\">\n         
     <BehaviorTree id=\"0\" />\n          <PrioritySelectorNode id=\"17\" />\n         
     <RepeatDecorator id=\"1\" />\n        </data>\n      </_data>\n    </PrioritySelectorNode>\n   
     <ConditionEvalNode id=\"19\">\n      <_data>\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"359.8689 443.2143\" name=\"Perception/IsTargetClose\"
+    selected=\"False\" position=\"1396.369 658.2143\" name=\"Perception/IsTargetClose\"
     description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\n          <BehaviorTree
     id=\"0\" />\n          <ConditionEvalNode id=\"19\" />\n          <PrioritySelectorNode
     id=\"17\" />\n        </data>\n      </_data>\n    </ConditionEvalNode>\n   
     <ActionNode id=\"18\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"359.8689 443.2143\" name=\"MyActions/Flee\" description=\"Moves the
+    position=\"1396.369 658.2143\" name=\"MyActions/Flee\" description=\"Moves the
     game object to a given position by using a NavMeshAgent\" cardinality=\"0\" hasParent=\"False\">\n         
     <BehaviorTree id=\"0\" />\n          <ActionNode id=\"18\" />\n        </data>\n     
     </_data>\n    </ActionNode>\n    <ConditionEvalNode id=\"49\">\n      <_data>\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"915.1271 858.2451\" name=\"MyConditions/IsInShootDistance\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"1951.627 1073.245\" name=\"MyConditions/IsInShootDistance\"
     description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\n          <BehaviorTree
     id=\"0\" />\n          <ConditionEvalNode id=\"49\" />\n          <PrioritySelectorNode
     id=\"17\" />\n        </data>\n      </_data>\n    </ConditionEvalNode>\n   
     <SequenceNode id=\"40\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"114.8647 442.6032\" name=\"Sequence\" description=\"Executes all its
+    position=\"1151.365 657.6032\" name=\"Sequence\" description=\"Executes all its
     children in sequence until all of them are successful\" cardinality=\"-1\" hasParent=\"False\">\n         
     <BehaviorTree id=\"40\" />\n        </data>\n      </_data>\n    </SequenceNode>\n   
     <ConditionEvalNode id=\"64\">\n      <_data>\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"921.2349 484.9382\" name=\"Perception/IsTargetClose\"
+    selected=\"False\" position=\"1957.735 699.9382\" name=\"Perception/IsTargetClose\"
     description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\n          <BehaviorTree
     id=\"0\" />\n          <ConditionEvalNode id=\"64\" />\n          <PrioritySelectorNode
     id=\"17\" />\n        </data>\n      </_data>\n    </ConditionEvalNode>\n   
     <ActionNode id=\"63\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"821.1114 434.4444\" name=\"Navigation/MoveToGameObject\" description=\"Moves
+    position=\"1857.611 649.4444\" name=\"Navigation/MoveToGameObject\" description=\"Moves
     the game object towards a given target by using a NavMeshAgent\" cardinality=\"0\"
     hasParent=\"False\">\n          <BehaviorTree id=\"0\" />\n          <ActionNode
     id=\"63\" />\n        </data>\n      </_data>\n    </ActionNode>\n    <ConditionEvalNode
     id=\"62\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"1182.099 476.4197\" name=\"AlwaysTrue\" description=\"Eval\" cardinality=\"1\"
+    position=\"2218.599 691.4197\" name=\"AlwaysTrue\" description=\"Eval\" cardinality=\"1\"
     hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n          <ConditionEvalNode
     id=\"62\" />\n          <PrioritySelectorNode id=\"17\" />\n        </data>\n     
     </_data>\n    </ConditionEvalNode>\n    <SubbehaviorNode id=\"61\">\n      <_data>\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"1060 423.3333\" name=\"QuickStartGuide/DoneWander\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"2096.5 638.3333\" name=\"QuickStartGuide/DoneWander\"
     description=\"Wanders to random positions around a NavMesh area.\" cardinality=\"-1\"
     hasParent=\"False\">\n          <BehaviorTree id=\"0\" />\n          <SubbehaviorNode
     id=\"61\" />\n        </data>\n      </_data>\n    </SubbehaviorNode>\n    <ActionNode
     id=\"60\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"592.2214 636.6677\" name=\"MyActions/ShootPreparation\" description=\"Action
+    position=\"1628.721 851.6677\" name=\"MyActions/ShootPreparation\" description=\"Action
     that success after a period of time.\" cardinality=\"0\" hasParent=\"True\">\n         
     <BehaviorTree id=\"40\" />\n          <ActionNode id=\"60\" />\n          <SequenceNode
     id=\"40\" />\n        </data>\n      </_data>\n    </ActionNode>\n    <ActionNode
     id=\"23\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"810.2728 634.9285\" name=\"Samples/ProgQuickStartGuide/ShootOnce\"
+    position=\"1846.773 849.9285\" name=\"Samples/ProgQuickStartGuide/ShootOnce\"
     description=\"Clone a 'bullet' and shoots it throught the Forward axis with the
     specified velocity.\" cardinality=\"0\" hasParent=\"True\">\n          <BehaviorTree
     id=\"40\" />\n          <ActionNode id=\"23\" />\n          <SequenceNode id=\"40\"
