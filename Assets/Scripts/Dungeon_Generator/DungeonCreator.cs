@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class DungeonCreator : MonoBehaviour
+public class DungeonCreator: MonoBehaviour
 {
     public int dungeonWidth;
     public int dungeonLength;
@@ -22,7 +22,7 @@ public class DungeonCreator : MonoBehaviour
     [Range(0, 2)]
     public int RoomOffset;
 
-    public List<GameObject> roomObjects;
+    public List<GameObject> roomPlanes;
 
     public GameObject wallVertical, wallHorizontal;
 
@@ -32,7 +32,11 @@ public class DungeonCreator : MonoBehaviour
     List<Vector3Int> possibleWallVerticalPosition;
 
     public GameObject PlayerPrefab;
-    public GameObject enemy;
+    public GameObject Enemy1Prefab;
+    public GameObject Enemy2Prefab;
+    public GameObject Enemy3Prefab;
+
+    private GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +50,7 @@ public class DungeonCreator : MonoBehaviour
     public void CreateDungeon()
     {
         DestroyAllChildren();
-        roomObjects.Clear();
+        roomPlanes.Clear();
 
         DungeonGenerator generator = new DungeonGenerator(dungeonWidth, dungeonLength);
         var listOfRooms = generator.CalculateDungeonRooms(maxIterations, roomWidthMin, roomLengthMin,
@@ -79,42 +83,72 @@ public class DungeonCreator : MonoBehaviour
 
         CreateWalls(wallParent);
 
-
-        UnityEngine.AI.NavMeshSurface nav = GetComponent<NavMeshSurface>();
+        NavMeshSurface nav = GetComponent<NavMeshSurface>();
         nav.BuildNavMesh();
 
         int startRoomIndex = SpawnPlayer(listOfRooms);
+        //Gegner hier spawnen in allen Räumen außer startRoomIndex
 
+        listOfRooms.RemoveAt(startRoomIndex); //Spieler raum entfernen
+        roomPlanes.RemoveAt(startRoomIndex);
+        SpawnAllEnemies(listOfRooms);
     }
 
     private int SpawnPlayer(List<Node> listOfRooms)
     {
         //Zuf�lliger Startraum fuer Spieler
-        int startRoomIndex = UnityEngine.Random.Range(0, listOfRooms.Count - 1);
-        
-        //Mittelpunkt als Spawnpoint setzen
-        Node spawnRoom = listOfRooms[startRoomIndex];
-        Debug.Log("Index Spawn Raum :" + startRoomIndex);
-        Debug.Log("Spawn Room TopRightCorner:" + spawnRoom.TopRightAreaCorner);
-        Debug.Log("Spawn Room BottomLeftCorner:" + spawnRoom.BottomLeftAreaCorner);
+        int startRoomIndex = UnityEngine.Random.Range(0, listOfRooms.Count);
 
-        Vector3Int middlePoint = new Vector3Int(
-            (spawnRoom.TopRightAreaCorner.x + spawnRoom.BottomLeftAreaCorner.x) / 2,
-            0,
-            (spawnRoom.TopRightAreaCorner.y + spawnRoom.BottomLeftAreaCorner.y) / 2);
-
-        Debug.Log("Berechneter Mittelpunkt: " + middlePoint);
-
-
-        GameObject enemy_2Legs = Instantiate(enemy, middlePoint, Quaternion.identity, this.transform); 
-        enemy_2Legs.GetComponent<BehaviorExecutor>().SetBehaviorParam("wanderArea", roomObjects[startRoomIndex]);
+        Vector3 middlePoint = computeMiddlePoint(listOfRooms[startRoomIndex]);
 
         //Spielerprefab spawnen
-        GameObject player = Instantiate(PlayerPrefab, middlePoint, Quaternion.identity, this.transform);
-        enemy_2Legs.GetComponent<BehaviorExecutor>().SetBehaviorParam("target", player);
-        player.AddComponent<PlayerHealth>(); 
+        player = Instantiate(PlayerPrefab, middlePoint, Quaternion.identity, this.transform);
+        player.AddComponent<PlayerHealth>();
+        
         //Startraum Index zurueckgeben
         return startRoomIndex;
+    }
+
+    private Vector3 computeMiddlePoint(Node room)
+    {
+        Vector3Int middlePoint = new Vector3Int(
+            (room.TopRightAreaCorner.x + room.BottomLeftAreaCorner.x) / 2,
+            0,
+            (room.TopRightAreaCorner.y + room.BottomLeftAreaCorner.y) / 2);
+
+        Debug.Log("Berechneter Mittelpunkt: " + middlePoint);
+        return middlePoint;
+    }
+
+    private void SpawnAllEnemies(List<Node> enemyRooms)
+    {
+        for(int i = 0; i < enemyRooms.Count; i++)
+        {
+            int enemyType = UnityEngine.Random.Range(1, 4);
+            switch(enemyType)
+            {
+                case 1:
+                    SpawnEnemies(enemyRooms[i], Enemy1Prefab, 2, i);
+                    break;
+                case 2:
+                    SpawnEnemies(enemyRooms[i], Enemy2Prefab, 2, i);
+                    break;
+                case 3:
+                    SpawnEnemies(enemyRooms[i], Enemy3Prefab, 2, i);
+                    break;
+            }
+        }
+    }
+
+    private void SpawnEnemies(Node room, GameObject enemyPrefab, int count, int indexRoom)
+    {
+        Vector3 spawnPoint = computeMiddlePoint(room);
+        for(int i = 0; i < count; i++)
+        {
+            GameObject enemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity, this.transform);
+            enemy.GetComponent<BehaviorExecutor>().SetBehaviorParam("wanderArea", roomPlanes[indexRoom]);
+            enemy.GetComponent<BehaviorExecutor>().SetBehaviorParam("target", player);
+        }
     }
 
     private void CreateWalls(GameObject wallParent)
@@ -215,7 +249,7 @@ public class DungeonCreator : MonoBehaviour
         
         if(parentObject.name == "RoomParent")
         {
-            roomObjects.Add(centerOfFloor);
+            roomPlanes.Add(centerOfFloor);
         }
     }
 
