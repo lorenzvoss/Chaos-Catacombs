@@ -42,12 +42,10 @@ namespace BBCore.Actions
             if(stunnTheEnemy && stunnTimer >= 0)
             {
                 stunnTimer -= Time.deltaTime;
-                Debug.Log("Stunn RUNNING");
                 return TaskStatus.RUNNING;
             }
             else{
                 gameObject.GetComponent<Enemy_Large_Behavior>().hitThePlayerInLastXSec = false;
-                Debug.Log("Stunn COMPLETED: " + Time.time);
                 return TaskStatus.COMPLETED;
             }
         }

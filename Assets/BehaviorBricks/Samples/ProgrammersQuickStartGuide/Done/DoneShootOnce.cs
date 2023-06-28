@@ -28,7 +28,6 @@ namespace BBSamples.PQSG // Programmers Quick Start Guide
 
         ///<value>Input target Parameter.</value>
         // Define target at which will be shot.
-        [InParam("target")]
         public GameObject target;
 
         ///<value>Input velocity Parameter, by deafult is 30f.</value>
@@ -44,6 +43,7 @@ namespace BBSamples.PQSG // Programmers Quick Start Guide
         // Initialization method. If not established, we look for the shooting point.
         public override void OnStart()
         {
+            target = GameObject.FindWithTag("Player");
             if (shootPoint == null)
             {
                 shootPoint = gameObject.transform.Find("shootPoint");

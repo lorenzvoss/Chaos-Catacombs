@@ -15,52 +15,114 @@ MonoBehaviour:
   brickName: Assets/BehaviorBricks/BehaviorBoss.asset
   xml: "\uFEFF<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<BehaviorBricks xmlns:ref=\"urn:padaone\"
     version=\"1.0\">\n  <BehaviorTree id=\"0\" />\n  <runtimeInfo>\n    <BehaviorTree
-    id=\"0\" guid=\"ee5a45efee8bf42eab2f1058bf6143a7\" nextId=\"10\">\n      <root>\n       
+    id=\"0\" guid=\"ee5a45efee8bf42eab2f1058bf6143a7\" nextId=\"19\">\n      <root>\n       
     <RepeatDecorator id=\"1\" />\n      </root>\n      <inputParams>\n        <inputValues>\n         
-    <entry name=\"laserPrefab\" type=\"UnityEngine.GameObject\" isBlackboard=\"False\"
-    />\n        </inputValues>\n      </inputParams>\n      <outputParams>\n       
-    <outputValues>\n          <entry name=\"isWalking\" type=\"System.Boolean\" isBlackboard=\"True\"
-    />\n        </outputValues>\n      </outputParams>\n      <localParams />\n   
-    </BehaviorTree>\n    <RepeatDecorator id=\"1\" loops=\"-1\" policy=\"ContinueWhenChildFails\">\n     
-    <child>\n        <SequenceNode id=\"2\" />\n      </child>\n      <inputParams
-    />\n      <outputParams />\n      <localParams />\n    </RepeatDecorator>\n   
-    <SequenceNode id=\"2\">\n      <children>\n        <elem>\n          <ActionNode
-    id=\"9\" />\n        </elem>\n        <elem>\n          <ActionNode id=\"7\"
-    />\n        </elem>\n      </children>\n      <inputParams />\n      <outputParams
-    />\n      <localParams />\n    </SequenceNode>\n    <ActionNode id=\"9\" action=\"MyActions/ShootLaserBeams\">\n     
+    <entry name=\"bullet\" type=\"UnityEngine.GameObject\" isBlackboard=\"False\"
+    />\n          <entry name=\"shootPoint\" type=\"UnityEngine.Transform\" isBlackboard=\"False\"
+    />\n          <entry name=\"velocity\" type=\"System.Single\" isBlackboard=\"False\"
+    value=\"0\" />\n        </inputValues>\n      </inputParams>\n      <outputParams
+    />\n      <localParams />\n    </BehaviorTree>\n    <RepeatDecorator id=\"1\"
+    loops=\"-1\" policy=\"ContinueWhenChildFails\">\n      <child>\n        <SequenceNode
+    id=\"2\" />\n      </child>\n      <inputParams />\n      <outputParams />\n     
+    <localParams />\n    </RepeatDecorator>\n    <SequenceNode id=\"2\">\n      <children>\n       
+    <elem>\n          <SubbehaviorNode id=\"11\" />\n        </elem>\n        <elem>\n         
+    <ActionNode id=\"12\" />\n        </elem>\n        <elem>\n          <ActionNode
+    id=\"13\" />\n        </elem>\n        <elem>\n          <ActionNode id=\"14\"
+    />\n        </elem>\n        <elem>\n          <ActionNode id=\"15\" />\n       
+    </elem>\n        <elem>\n          <ActionNode id=\"18\" />\n        </elem>\n       
+    <elem>\n          <ActionNode id=\"16\" />\n        </elem>\n        <elem>\n         
+    <ActionNode id=\"17\" />\n        </elem>\n      </children>\n      <inputParams
+    />\n      <outputParams />\n      <localParams />\n    </SequenceNode>\n    <SubbehaviorNode
+    id=\"11\">\n      <_guid>b7cde8290a133422089905eab726d809</_guid>\n      <inputParams>\n       
+    <inputValues>\n          <entry name=\"bullet\" type=\"UnityEngine.GameObject\"
+    isBlackboard=\"True\" blackboard=\"bullet\" />\n          <entry name=\"shootPoint\"
+    type=\"UnityEngine.Transform\" isBlackboard=\"True\" blackboard=\"shootPoint\"
+    />\n          <entry name=\"velocity\" type=\"System.Single\" isBlackboard=\"True\"
+    blackboard=\"velocity\" />\n        </inputValues>\n      </inputParams>\n     
+    <outputParams />\n      <localParams />\n    </SubbehaviorNode>\n    <ActionNode
+    id=\"12\" action=\"Basic/WaitForSeconds\">\n      <inputParams>\n        <inputValues>\n         
+    <entry name=\"seconds\" type=\"System.Single\" isBlackboard=\"False\" value=\"2\"
+    />\n        </inputValues>\n      </inputParams>\n      <outputParams />\n     
+    <localParams />\n    </ActionNode>\n    <ActionNode id=\"13\" action=\"MyActions/ShootLaserBeams\">\n     
     <inputParams>\n        <inputValues>\n          <entry name=\"laserPrefab\" type=\"UnityEngine.GameObject\"
     isBlackboard=\"True\" blackboard=\"laserPrefab\" />\n        </inputValues>\n     
     </inputParams>\n      <outputParams />\n      <localParams />\n    </ActionNode>\n   
-    <ActionNode id=\"7\" action=\"Basic/WaitForSeconds\">\n      <inputParams>\n       
+    <ActionNode id=\"14\" action=\"Basic/WaitForSeconds\">\n      <inputParams>\n       
     <inputValues>\n          <entry name=\"seconds\" type=\"System.Single\" isBlackboard=\"False\"
-    value=\"5\" />\n        </inputValues>\n      </inputParams>\n      <outputParams
-    />\n      <localParams />\n    </ActionNode>\n  </runtimeInfo>\n  <editorInfo>\n   
-    <BehaviorTree id=\"0\" _name=\"BehaviorBoss\" _description=\"\" _removeIfClosed=\"False\">\n     
-    <_rootList>\n        <elem>\n          <RepeatDecorator id=\"1\" />\n       
-    </elem>\n        <elem>\n          <SequenceNode id=\"2\" />\n        </elem>\n       
-    <elem>\n          <ActionNode id=\"7\" />\n        </elem>\n        <elem>\n         
-    <ActionNode id=\"9\" />\n        </elem>\n      </_rootList>\n      <_nodes>\n       
-    <nodes>\n          <RepeatDecorator id=\"1\" />\n          <SequenceNode id=\"2\"
-    />\n          <ActionNode id=\"9\" />\n          <ActionNode id=\"7\" />\n       
-    </nodes>\n      </_nodes>\n    </BehaviorTree>\n    <RepeatDecorator id=\"1\">\n     
-    <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"537 183\"
-    name=\"Repeat\" description=\"Repeats the execution of its child node\" cardinality=\"1\"
-    hasParent=\"False\">\n          <BehaviorTree id=\"0\" />\n          <RepeatDecorator
-    id=\"1\" />\n        </data>\n      </_data>\n    </RepeatDecorator>\n    <SequenceNode
-    id=\"2\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"511
-    357\" name=\"Sequence\" description=\"Executes all its children in sequence until
-    all of them are successful\" cardinality=\"-1\" hasParent=\"True\">\n         
+    value=\"2\" />\n        </inputValues>\n      </inputParams>\n      <outputParams
+    />\n      <localParams />\n    </ActionNode>\n    <ActionNode id=\"15\" action=\"MyActions/KickAttack\">\n     
+    <inputParams />\n      <outputParams />\n      <localParams />\n    </ActionNode>\n   
+    <ActionNode id=\"18\" action=\"Basic/WaitForSeconds\">\n      <inputParams>\n       
+    <inputValues>\n          <entry name=\"seconds\" type=\"System.Single\" isBlackboard=\"False\"
+    value=\"2\" />\n        </inputValues>\n      </inputParams>\n      <outputParams
+    />\n      <localParams />\n    </ActionNode>\n    <ActionNode id=\"16\" action=\"MyActions/TeleportToRandPos\">\n     
+    <inputParams />\n      <outputParams />\n      <localParams />\n    </ActionNode>\n   
+    <ActionNode id=\"17\" action=\"MyActions/SkyAttack\">\n      <inputParams />\n     
+    <outputParams />\n      <localParams />\n    </ActionNode>\n  </runtimeInfo>\n 
+    <editorInfo>\n    <BehaviorTree id=\"0\" _name=\"BehaviorBoss\" _description=\"\"
+    _removeIfClosed=\"False\">\n      <_rootList>\n        <elem>\n          <RepeatDecorator
+    id=\"1\" />\n        </elem>\n        <elem>\n          <SequenceNode id=\"2\"
+    />\n        </elem>\n        <elem>\n          <SubbehaviorNode id=\"11\" />\n       
+    </elem>\n        <elem>\n          <ActionNode id=\"12\" />\n        </elem>\n       
+    <elem>\n          <ActionNode id=\"13\" />\n        </elem>\n        <elem>\n         
+    <ActionNode id=\"14\" />\n        </elem>\n        <elem>\n          <ActionNode
+    id=\"15\" />\n        </elem>\n        <elem>\n          <ActionNode id=\"16\"
+    />\n        </elem>\n        <elem>\n          <ActionNode id=\"17\" />\n       
+    </elem>\n        <elem>\n          <ActionNode id=\"18\" />\n        </elem>\n     
+    </_rootList>\n      <_nodes>\n        <nodes>\n          <RepeatDecorator id=\"1\"
+    />\n          <SequenceNode id=\"2\" />\n          <SubbehaviorNode id=\"11\"
+    />\n          <ActionNode id=\"18\" />\n          <ActionNode id=\"12\" />\n         
+    <ActionNode id=\"13\" />\n          <ActionNode id=\"14\" />\n          <ActionNode
+    id=\"15\" />\n          <ActionNode id=\"16\" />\n          <ActionNode id=\"17\"
+    />\n        </nodes>\n      </_nodes>\n    </BehaviorTree>\n    <RepeatDecorator
+    id=\"1\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"1024
+    383.4999\" name=\"Repeat\" description=\"Repeats the execution of its child node\"
+    cardinality=\"1\" hasParent=\"False\">\n          <BehaviorTree id=\"0\" />\n         
+    <RepeatDecorator id=\"1\" />\n        </data>\n      </_data>\n    </RepeatDecorator>\n   
+    <SequenceNode id=\"2\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
+    position=\"1082.286 563.2144\" name=\"Sequence\" description=\"Executes all its
+    children in sequence until all of them are successful\" cardinality=\"-1\" hasParent=\"True\">\n         
     <BehaviorTree id=\"0\" />\n          <SequenceNode id=\"2\" />\n          <RepeatDecorator
-    id=\"1\" />\n        </data>\n      </_data>\n    </SequenceNode>\n    <ActionNode
-    id=\"9\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"True\" position=\"360
-    488\" name=\"MyActions/ShootLaserBeams\" description=\"\" cardinality=\"0\" hasParent=\"True\">\n         
-    <BehaviorTree id=\"0\" />\n          <ActionNode id=\"9\" />\n          <SequenceNode
+    id=\"1\" />\n        </data>\n      </_data>\n    </SequenceNode>\n    <SubbehaviorNode
+    id=\"11\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
+    position=\"604 746.4997\" name=\"TeleportShootX3\" description=\"\" cardinality=\"-1\"
+    hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n          <SubbehaviorNode
+    id=\"11\" />\n          <SequenceNode id=\"2\" />\n        </data>\n      </_data>\n   
+    </SubbehaviorNode>\n    <ActionNode id=\"12\">\n      <_data>\n        <data
+    breakpoint=\"0\" selected=\"True\" position=\"832.2498 753.9998\" name=\"Basic/WaitForSeconds\"
+    description=\"Action that success after a period of time.\" cardinality=\"0\"
+    hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n          <ActionNode
+    id=\"12\" />\n          <SequenceNode id=\"2\" />\n        </data>\n      </_data>\n   
+    </ActionNode>\n    <ActionNode id=\"13\">\n      <_data>\n        <data breakpoint=\"0\"
+    selected=\"False\" position=\"1087.5 757.2498\" name=\"MyActions/ShootLaserBeams\"
+    description=\"\" cardinality=\"0\" hasParent=\"True\">\n          <BehaviorTree
+    id=\"0\" />\n          <ActionNode id=\"13\" />\n          <SequenceNode id=\"2\"
+    />\n        </data>\n      </_data>\n    </ActionNode>\n    <ActionNode id=\"14\">\n     
+    <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"1306.917
+    760.4167\" name=\"Basic/WaitForSeconds\" description=\"Action that success after
+    a period of time.\" cardinality=\"0\" hasParent=\"True\">\n          <BehaviorTree
+    id=\"0\" />\n          <ActionNode id=\"14\" />\n          <SequenceNode id=\"2\"
+    />\n        </data>\n      </_data>\n    </ActionNode>\n    <ActionNode id=\"15\">\n     
+    <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"1539.5
+    740.1667\" name=\"MyActions/KickAttack\" description=\"\" cardinality=\"0\" hasParent=\"True\">\n         
+    <BehaviorTree id=\"0\" />\n          <ActionNode id=\"15\" />\n          <SequenceNode
     id=\"2\" />\n        </data>\n      </_data>\n    </ActionNode>\n    <ActionNode
-    id=\"7\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"599
-    487\" name=\"Basic/WaitForSeconds\" description=\"Action that success after a
-    period of time.\" cardinality=\"0\" hasParent=\"True\">\n          <BehaviorTree
-    id=\"0\" />\n          <ActionNode id=\"7\" />\n          <SequenceNode id=\"2\"
+    id=\"18\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
+    position=\"1558 804\" name=\"Basic/WaitForSeconds\" description=\"Action that
+    success after a period of time.\" cardinality=\"0\" hasParent=\"True\">\n         
+    <BehaviorTree id=\"0\" />\n          <ActionNode id=\"18\" />\n          <SequenceNode
+    id=\"2\" />\n        </data>\n      </_data>\n    </ActionNode>\n    <ActionNode
+    id=\"16\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
+    position=\"1954.167 712.1667\" name=\"MyActions/TeleportToRandPos\" description=\"\"
+    cardinality=\"0\" hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n         
+    <ActionNode id=\"16\" />\n          <SequenceNode id=\"2\" />\n        </data>\n     
+    </_data>\n    </ActionNode>\n    <ActionNode id=\"17\">\n      <_data>\n       
+    <data breakpoint=\"0\" selected=\"False\" position=\"2211.667 755.6667\" name=\"MyActions/SkyAttack\"
+    description=\"\" cardinality=\"0\" hasParent=\"True\">\n          <BehaviorTree
+    id=\"0\" />\n          <ActionNode id=\"17\" />\n          <SequenceNode id=\"2\"
     />\n        </data>\n      </_data>\n    </ActionNode>\n  </editorInfo>\n</BehaviorBricks>"
-  zoom: 1
-  subslist: []
+  zoom: 0.5
+  subslist:
+  - {fileID: 11400000, guid: 0a88b20b4523c4a2ea334d917fce84ea, type: 2}
+  - {fileID: 11400000, guid: b7cde8290a133422089905eab726d809, type: 2}
   _guid: ee5a45efee8bf42eab2f1058bf6143a7

@@ -8,53 +8,85 @@ namespace BBUnity.Actions
     [Action("MyActions/ShootLaserBeams")]
     public class ShootLaserBeams : GOAction
     {
-        [InParam("laserPrefab")]
-        public GameObject laserPrefab;
+        //[InParam("laserPrefab")]
+        //public GameObject laserPrefab;
 
         private Animator animator;
         private GameObject player;
         private GameObject shootpointLeft;
         private GameObject shootpointRight;
-        private int numberOfLasers;
-        private int shotLasers;
-        private float fireDelay;
         private float beamDuration;
-        private bool shootFromLeftSide;
+        private float beamTimer;
+        private LineRenderer lineRendererLeft;
+        private LineRenderer lineRendererRight;
+        private Vector3 endPos;
+
+        ///TODOS
+        /// - Laser hört noch am Spieler auf
+        /// - Größe vom Laser anpassen
+        /// - Laser Vorbereitung (Drehung zum Spieler, Schussvorlauf)
 
         public override void OnStart()
         {
             animator = gameObject.GetComponent<Animator>();
             player = GameObject.FindWithTag("Player");
-            //laserPrefab = Resources.Load<GameObject>("/Assets/Prefabs/Laserbeam.prefab");
             shootpointLeft = GameObject.Find("ShootpointLeft");
             shootpointRight = GameObject.Find("ShootpointRight");
-            numberOfLasers = 100;
-            shotLasers = 0;
-            //fireDelay = 0.2f;
-            shootFromLeftSide = true;
-
-            Debug.Log(laserPrefab);
-            Debug.Log(shootpointLeft);
-            Debug.Log(shootpointRight);
+            lineRendererLeft = shootpointLeft.GetComponent<LineRenderer>();
+            lineRendererRight = shootpointRight.GetComponent<LineRenderer>();
+            beamTimer = 0f;
+            beamDuration = 3f;
+            endPos = player.transform.position + new Vector3(0f, 0.75f, 0f);
+            animator.SetBool("isShooting", true);
+            gameObject.transform.LookAt(player.transform);
         }
 
 
         public override TaskStatus OnUpdate()
         {
-            if(shotLasers < numberOfLasers)
+            if( beamTimer <= beamDuration)
             {
-
-                if(shootFromLeftSide)
-                {
-                    GameObject.Instantiate(laserPrefab, shootpointLeft.transform.position, Quaternion.identity);
-                }else{
-                    GameObject.Instantiate(laserPrefab, shootpointRight.transform.position, Quaternion.identity);
-                }
-
-            }else{
-                return TaskStatus.COMPLETED; 
+                beamTimer += Time.deltaTime;
+                shootLaser();
+                return TaskStatus.RUNNING;
             }
-            return TaskStatus.RUNNING;
+            else{
+                animator.SetBool("isShooting", false);
+                lineRendererLeft.enabled = false;
+                lineRendererRight.enabled = false;
+                return TaskStatus.COMPLETED;
+            }
+        }
+
+        public void shootLaser()
+        {
+            RaycastHit hit;
+            Vector3 startPosLeft = shootpointLeft.transform.position;
+            Vector3 startPosRight = shootpointRight.transform.position;
+
+            if (Physics.Raycast(startPosLeft, (endPos - startPosLeft).normalized , out hit))
+            {
+                // Kollision mit einem GameObject wurde erkannt
+
+                // Zeige den Raycast visuell mit dem Line Renderer
+                lineRendererLeft.enabled = true;
+                Draw3DRay(lineRendererLeft ,shootpointLeft.transform.position, hit.point); 
+            }
+            if (Physics.Raycast(startPosRight, (endPos - startPosRight).normalized, out hit))
+            {
+                // Kollision mit einem GameObject wurde erkannt
+
+                // Zeige den Raycast visuell mit dem Line Renderer
+                lineRendererRight.enabled = true;
+                Draw3DRay(lineRendererRight ,shootpointRight.transform.position, hit.point);
+            }
+            
+        }
+
+        public void Draw3DRay(LineRenderer ren, Vector3 startPos, Vector3 endPos)
+        {
+            ren.SetPosition(0, startPos);
+            ren.SetPosition(1, endPos);
         }
     }
 }
