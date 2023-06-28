@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class DungeonCreator : MonoBehaviour
+public class DungeonCreator: MonoBehaviour
 {
     public int dungeonWidth;
     public int dungeonLength;
@@ -84,7 +84,7 @@ public class DungeonCreator : MonoBehaviour
         nav.BuildNavMesh();
 
         int startRoomIndex = SpawnPlayer(listOfRooms);
-
+        //Gegner hier spawnen in allen Räumen außer startRoomIndex
     }
 
     private int SpawnPlayer(List<Node> listOfRooms)
