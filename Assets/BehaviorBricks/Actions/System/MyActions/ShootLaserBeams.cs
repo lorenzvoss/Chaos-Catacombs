@@ -37,7 +37,6 @@ namespace BBUnity.Actions
             beamTimer = 0f;
             beamDuration = 3f;
             endPos = player.transform.position + new Vector3(0f, 0.75f, 0f);
-            animator.SetBool("isShooting", true);
             gameObject.transform.LookAt(player.transform);
         }
 

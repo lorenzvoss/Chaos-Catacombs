@@ -147,7 +147,7 @@ MonoBehaviour:
     boolParamsNames: []
     boolParamsLostDefaultValue: 
     floatParams:
-    - 2
+    - 1
     floatParamsNames:
     - velocity
     floatParamsLostDefaultValue: 
@@ -734,7 +734,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1559348566}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.002, y: 1.91, z: 0.744}
+  m_LocalPosition: {x: -0.002, y: 1.91, z: 1.367}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1024,7 +1024,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6311201337086346178, guid: 19eadcf8fbed56b4da77ca94c1b4145f, type: 3}
       propertyPath: m_Radius
-      value: 0.3
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6311201337086346178, guid: 19eadcf8fbed56b4da77ca94c1b4145f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6311201337086346178, guid: 19eadcf8fbed56b4da77ca94c1b4145f, type: 3}
       propertyPath: m_IsTrigger
@@ -1098,13 +1102,43 @@ GameObject:
   - component: {fileID: 179466497}
   - component: {fileID: 179466494}
   - component: {fileID: 179466498}
+  - component: {fileID: 919132148166986839}
+  - component: {fileID: 919132148166986838}
   m_Layer: 0
   m_Name: Mech_RaeTheRedPanda
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &919132148166986838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148166986837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0272f64c2abf9445e9b7aa94e393edb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1000
+  isHit: 0
+  wasShotInHead: 0
+--- !u!135 &919132148166986839
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148166986837}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 2.25, z: 0.62}
 --- !u!4 &974143964882951544
 Transform:
   m_ObjectHideFlags: 0

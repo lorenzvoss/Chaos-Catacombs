@@ -18,7 +18,7 @@ public class DestroyRocket : MonoBehaviour
 
     void OnCollisionEnter(Collision collider)
     {
-        if(!collider.gameObject.CompareTag("Enemy"))
+        if(!collider.gameObject.CompareTag("Enemy") && !collider.gameObject.CompareTag("Boss"))
             Destroy(gameObject);
     }
 }

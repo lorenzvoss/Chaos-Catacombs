@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a7c8ca992f915438a96c2077353778, type: 3}
+  m_Name: FinishedSkyAttack
+  m_EditorClassIdentifier: 
+  brickName: Assets/FinishedSkyAttack.asset
+  xml: "\uFEFF<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<BehaviorBricks xmlns:ref=\"urn:padaone\"
+    version=\"1.0\">\n  <BehaviorTree id=\"0\" />\n  <runtimeInfo>\n    <BehaviorTree
+    id=\"0\" guid=\"b8495d692b3d040809dade3171dbdb3c\" nextId=\"6\">\n      <root>\n       
+    <SequenceNode id=\"1\" />\n      </root>\n      <inputParams />\n      <outputParams
+    />\n      <localParams />\n    </BehaviorTree>\n    <SequenceNode id=\"1\">\n     
+    <children>\n        <elem>\n          <ActionNode id=\"2\" />\n        </elem>\n       
+    <elem>\n          <ActionNode id=\"3\" />\n        </elem>\n        <elem>\n         
+    <ActionNode id=\"4\" />\n        </elem>\n        <elem>\n          <ActionNode
+    id=\"5\" />\n        </elem>\n      </children>\n      <inputParams />\n     
+    <outputParams />\n      <localParams />\n    </SequenceNode>\n    <ActionNode
+    id=\"2\" action=\"MyActions/SkyAttack\">\n      <inputParams />\n      <outputParams
+    />\n      <localParams />\n    </ActionNode>\n    <ActionNode id=\"3\" action=\"Basic/WaitForSeconds\">\n     
+    <inputParams>\n        <inputValues>\n          <entry name=\"seconds\" type=\"System.Single\"
+    isBlackboard=\"False\" value=\"1\" />\n        </inputValues>\n      </inputParams>\n     
+    <outputParams />\n      <localParams />\n    </ActionNode>\n    <ActionNode id=\"4\"
+    action=\"MyActions/TeleportToRandPos\">\n      <inputParams />\n      <outputParams
+    />\n      <localParams />\n    </ActionNode>\n    <ActionNode id=\"5\" action=\"Basic/WaitForSeconds\">\n     
+    <inputParams>\n        <inputValues>\n          <entry name=\"seconds\" type=\"System.Single\"
+    isBlackboard=\"False\" value=\"2\" />\n        </inputValues>\n      </inputParams>\n     
+    <outputParams />\n      <localParams />\n    </ActionNode>\n  </runtimeInfo>\n 
+    <editorInfo>\n    <BehaviorTree id=\"0\" _name=\"FinishedSkyAttack\" _description=\"\"
+    _removeIfClosed=\"False\">\n      <_rootList>\n        <elem>\n          <SequenceNode
+    id=\"1\" />\n        </elem>\n        <elem>\n          <ActionNode id=\"2\"
+    />\n        </elem>\n        <elem>\n          <ActionNode id=\"3\" />\n       
+    </elem>\n        <elem>\n          <ActionNode id=\"4\" />\n        </elem>\n       
+    <elem>\n          <ActionNode id=\"5\" />\n        </elem>\n      </_rootList>\n     
+    <_nodes>\n        <nodes>\n          <SequenceNode id=\"1\" />\n          <ActionNode
+    id=\"2\" />\n          <ActionNode id=\"3\" />\n          <ActionNode id=\"4\"
+    />\n          <ActionNode id=\"5\" />\n        </nodes>\n      </_nodes>\n   
+    </BehaviorTree>\n    <SequenceNode id=\"1\">\n      <_data>\n        <data breakpoint=\"0\"
+    selected=\"False\" position=\"544 269\" name=\"Sequence\" description=\"Executes
+    all its children in sequence until all of them are successful\" cardinality=\"-1\"
+    hasParent=\"False\">\n          <BehaviorTree id=\"0\" />\n          <SequenceNode
+    id=\"1\" />\n        </data>\n      </_data>\n    </SequenceNode>\n    <ActionNode
+    id=\"2\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"92
+    545\" name=\"MyActions/SkyAttack\" description=\"\" cardinality=\"0\" hasParent=\"True\">\n         
+    <BehaviorTree id=\"0\" />\n          <ActionNode id=\"2\" />\n          <SequenceNode
+    id=\"1\" />\n        </data>\n      </_data>\n    </ActionNode>\n    <ActionNode
+    id=\"3\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"289
+    551\" name=\"Basic/WaitForSeconds\" description=\"Action that success after a
+    period of time.\" cardinality=\"0\" hasParent=\"True\">\n          <BehaviorTree
+    id=\"0\" />\n          <ActionNode id=\"3\" />\n          <SequenceNode id=\"1\"
+    />\n        </data>\n      </_data>\n    </ActionNode>\n    <ActionNode id=\"4\">\n     
+    <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"618 554\"
+    name=\"MyActions/TeleportToRandPos\" description=\"\" cardinality=\"0\" hasParent=\"True\">\n         
+    <BehaviorTree id=\"0\" />\n          <ActionNode id=\"4\" />\n          <SequenceNode
+    id=\"1\" />\n        </data>\n      </_data>\n    </ActionNode>\n    <ActionNode
+    id=\"5\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"898
+    551\" name=\"Basic/WaitForSeconds\" description=\"Action that success after a
+    period of time.\" cardinality=\"0\" hasParent=\"True\">\n          <BehaviorTree
+    id=\"0\" />\n          <ActionNode id=\"5\" />\n          <SequenceNode id=\"1\"
+    />\n        </data>\n      </_data>\n    </ActionNode>\n  </editorInfo>\n</BehaviorBricks>"
+  zoom: 1
+  subslist: []
+  _guid: b8495d692b3d040809dade3171dbdb3c

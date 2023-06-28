@@ -21,7 +21,7 @@ namespace BBUnity.Actions
             animator = gameObject.GetComponent<Animator>();
             navAgent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
             targetPosition = GameObject.FindWithTag("Player").transform.position;
-
+            navAgent.enabled = true;
             animator.SetBool("isWalking", true);
 
             //Alten Variablen des NavAgents speichern
@@ -51,7 +51,7 @@ namespace BBUnity.Actions
                 animator.SetBool("isWalking", false);
                 //Werte des navAgent zurücksetzen
                 navAgent.speed = oldSpeed;
-
+                navAgent.enabled = false;
                 
                 return TaskStatus.COMPLETED;
             }

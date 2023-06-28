@@ -26,9 +26,10 @@ namespace BBUnity.Actions
             animator = gameObject.GetComponent<Animator>();
             navAgent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
             targetPosition = GameObject.FindWithTag("Player").transform.position;
-            skyPosition = (gameObject.transform.position + targetPosition)/2  + new Vector3(0f, 10f, 0f);
+            targetPosition.y = 0f;
+            skyPosition = (gameObject.transform.position + targetPosition)/2  + new Vector3(0f, 15f, 0f);
             isLaunching = true;
-            launchSpeed = 15f;
+            launchSpeed = 20f;
             attackSpeed = 20f;
             reachedSkyPosition = false;
 
@@ -52,10 +53,9 @@ namespace BBUnity.Actions
 
                 if(!reachedSkyPosition)
                 {    
-                    launchSpeed -= 0.1f;
                     gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, skyPosition, launchSpeed * Time.deltaTime);
                 }else{
-                    attackSpeed += 0.1f;
+                    attackSpeed += 1f;
                     gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, targetPosition, attackSpeed * Time.deltaTime);
 
                     if(gameObject.transform.position == targetPosition)

@@ -13,6 +13,7 @@ TagManager:
   - Enemy
   - Rocket
   - Enemy_Large
+  - Boss
   layers:
   - Default
   - TransparentFX

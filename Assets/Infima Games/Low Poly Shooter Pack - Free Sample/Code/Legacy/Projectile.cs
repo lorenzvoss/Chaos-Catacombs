@@ -130,6 +130,21 @@ public class Projectile : MonoBehaviour {
 			Destroy(gameObject);
 		}
 		//If bullet collides with "Enemy" tag
+		if (collision.transform.tag == "Boss") 
+		{
+			//Toggle "isHit" on target object
+			collision.transform.gameObject.GetComponent
+				<BossBehavior>().isHit = true;
+				//Debug.Log(collision.GetType()));
+			if(collision.collider.GetType() == typeof(SphereCollider))
+			{
+				collision.transform.gameObject.GetComponent
+					<BossBehavior>().wasShotInHead = true;
+			}
+			//Destroy bullet object
+			Destroy(gameObject);
+		}
+		//If bullet collides with "Enemy" tag
 		if (collision.transform.tag == "Enemy_Large") 
 		{
 			//Toggle "isHit" on target object
