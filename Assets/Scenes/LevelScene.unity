@@ -189,17 +189,19 @@ MonoBehaviour:
   dungeonLength: 100
   roomWidthMin: 20
   roomLengthMin: 20
-  maxIterations: 10
+  maxIterations: 30
   corridorWidht: 3
   material: {fileID: 2100000, guid: 55a116e262661884fbb77a46cafa561f, type: 2}
   RoomBottomCornerModifier: 0
   RoomTopCornerModifier: 0
   RoomOffset: 0
-  roomObjects: []
+  roomPlanes: []
   wallVertical: {fileID: 8079539989346928297, guid: c348cb51311426d4fb99a7533004bcf6, type: 3}
   wallHorizontal: {fileID: 1916726304420837088, guid: 2dc18d7e02822da4382139e07b33049b, type: 3}
   PlayerPrefab: {fileID: 8852933529317200788, guid: 5f8ea9f7a1a857f4e908093a201c0b80, type: 3}
-  enemy: {fileID: 2692964429418969655, guid: 234829b153f644118b9732a59780911f, type: 3}
+  Enemy1Prefab: {fileID: 2692964429418969655, guid: 234829b153f644118b9732a59780911f, type: 3}
+  Enemy2Prefab: {fileID: 1237406692072013142, guid: a54c5ad2c7ff1467cae12bdc50c59935, type: 3}
+  Enemy3Prefab: {fileID: 1464558029041607042, guid: cf589f97ba1e4426fba1874b6ff4eb6e, type: 3}
 --- !u!114 &719114474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,7 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AgentTypeID: 0
-  m_CollectObjects: 0
+  m_CollectObjects: 2
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
