@@ -36,8 +36,9 @@ public class PlayerHealth : MonoBehaviour
         }
         if(isHitByLaser)
         {
-            currentHealth -= 3; 
+            currentHealth -= 0.5f; 
             Debug.Log("Health: " + currentHealth);
+            isHitByLaser = false;
         }
         if(isHitByKick)
         {

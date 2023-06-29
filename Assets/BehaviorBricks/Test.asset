@@ -15,27 +15,27 @@ MonoBehaviour:
   brickName: Assets/BehaviorBricks/Test.asset
   xml: "\uFEFF<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<BehaviorBricks xmlns:ref=\"urn:padaone\"
     version=\"1.0\">\n  <BehaviorTree id=\"0\" />\n  <runtimeInfo>\n    <BehaviorTree
-    id=\"0\" guid=\"0bf91c7eac8444d5e9af536a34abafaa\" nextId=\"6\">\n      <root>\n       
+    id=\"0\" guid=\"0bf91c7eac8444d5e9af536a34abafaa\" nextId=\"7\">\n      <root>\n       
     <RepeatDecorator id=\"1\" />\n      </root>\n      <inputParams />\n      <outputParams
     />\n      <localParams />\n    </BehaviorTree>\n    <RepeatDecorator id=\"1\"
     loops=\"-1\" policy=\"ContinueWhenChildFails\">\n      <child>\n        <SubbehaviorNode
-    id=\"5\" />\n      </child>\n      <inputParams />\n      <outputParams />\n     
-    <localParams />\n    </RepeatDecorator>\n    <SubbehaviorNode id=\"5\">\n     
-    <_guid>b8495d692b3d040809dade3171dbdb3c</_guid>\n      <inputParams />\n     
+    id=\"6\" />\n      </child>\n      <inputParams />\n      <outputParams />\n     
+    <localParams />\n    </RepeatDecorator>\n    <SubbehaviorNode id=\"6\">\n     
+    <_guid>8d446714f248d4d83911096899f9bf03</_guid>\n      <inputParams />\n     
     <outputParams />\n      <localParams />\n    </SubbehaviorNode>\n  </runtimeInfo>\n 
     <editorInfo>\n    <BehaviorTree id=\"0\" _name=\"Test\" _description=\"\" _removeIfClosed=\"False\">\n     
     <_rootList>\n        <elem>\n          <RepeatDecorator id=\"1\" />\n       
-    </elem>\n        <elem>\n          <SubbehaviorNode id=\"5\" />\n        </elem>\n     
+    </elem>\n        <elem>\n          <SubbehaviorNode id=\"6\" />\n        </elem>\n     
     </_rootList>\n      <_nodes>\n        <nodes>\n          <RepeatDecorator id=\"1\"
-    />\n          <SubbehaviorNode id=\"5\" />\n        </nodes>\n      </_nodes>\n   
+    />\n          <SubbehaviorNode id=\"6\" />\n        </nodes>\n      </_nodes>\n   
     </BehaviorTree>\n    <RepeatDecorator id=\"1\">\n      <_data>\n        <data
     breakpoint=\"0\" selected=\"False\" position=\"513 215\" name=\"Repeat\" description=\"Repeats
     the execution of its child node\" cardinality=\"1\" hasParent=\"False\">\n         
     <BehaviorTree id=\"0\" />\n          <RepeatDecorator id=\"1\" />\n        </data>\n     
-    </_data>\n    </RepeatDecorator>\n    <SubbehaviorNode id=\"5\">\n      <_data>\n       
-    <data breakpoint=\"0\" selected=\"True\" position=\"562 428\" name=\"FinishedSkyAttack\"
+    </_data>\n    </RepeatDecorator>\n    <SubbehaviorNode id=\"6\">\n      <_data>\n       
+    <data breakpoint=\"0\" selected=\"True\" position=\"557 454\" name=\"CompleteLaser\"
     description=\"\" cardinality=\"-1\" hasParent=\"True\">\n          <BehaviorTree
-    id=\"0\" />\n          <SubbehaviorNode id=\"5\" />\n          <RepeatDecorator
+    id=\"0\" />\n          <SubbehaviorNode id=\"6\" />\n          <RepeatDecorator
     id=\"1\" />\n        </data>\n      </_data>\n    </SubbehaviorNode>\n  </editorInfo>\n</BehaviorBricks>"
   zoom: 1
   subslist:
@@ -43,4 +43,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fdd70a6ea6d1b45668b3ea3794868761, type: 2}
   - {fileID: 11400000, guid: 20a53b56c96c04248b28381b22a9c5eb, type: 2}
   - {fileID: 11400000, guid: b8495d692b3d040809dade3171dbdb3c, type: 2}
+  - {fileID: 11400000, guid: 8d446714f248d4d83911096899f9bf03, type: 2}
   _guid: 0bf91c7eac8444d5e9af536a34abafaa

@@ -66,7 +66,10 @@ namespace BBUnity.Actions
             if (Physics.Raycast(startPosLeft, (endPos - startPosLeft).normalized , out hit))
             {
                 // Kollision mit einem GameObject wurde erkannt
-
+                if(hit.collider.gameObject == player)
+                {
+                    player.GetComponent<PlayerHealth>().isHitByLaser = true;
+                }
                 // Zeige den Raycast visuell mit dem Line Renderer
                 lineRendererLeft.enabled = true;
                 Draw3DRay(lineRendererLeft ,shootpointLeft.transform.position, hit.point); 
@@ -74,7 +77,10 @@ namespace BBUnity.Actions
             if (Physics.Raycast(startPosRight, (endPos - startPosRight).normalized, out hit))
             {
                 // Kollision mit einem GameObject wurde erkannt
-
+                if(hit.collider.gameObject == player)
+                {
+                    player.GetComponent<PlayerHealth>().isHitByLaser = true;
+                }
                 // Zeige den Raycast visuell mit dem Line Renderer
                 lineRendererRight.enabled = true;
                 Draw3DRay(lineRendererRight ,shootpointRight.transform.position, hit.point);

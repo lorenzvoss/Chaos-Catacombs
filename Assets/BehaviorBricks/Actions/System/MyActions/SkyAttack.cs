@@ -86,8 +86,6 @@ namespace BBUnity.Actions
             {
                 float distanceRatio = 1 - (distanceToPlayer / maxDamageDistance);
                 int damage = Mathf.RoundToInt(maxDamage * distanceRatio);
-                Debug.Log("Distanz: " + distanceToPlayer);
-                Debug.Log("Damage: " + damage);
                 return damage;
             }
 
