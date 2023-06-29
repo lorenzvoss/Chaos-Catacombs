@@ -71,7 +71,7 @@ MonoBehaviour:
     of them are successful\" cardinality=\"-1\" hasParent=\"False\">\n          <BehaviorTree
     id=\"0\" />\n          <SequenceNode id=\"1\" />\n        </data>\n      </_data>\n   
     </SequenceNode>\n    <SubbehaviorNode id=\"2\">\n      <_data>\n        <data
-    breakpoint=\"0\" selected=\"True\" position=\"335 399.5\" name=\"TeleportAndShoot\"
+    breakpoint=\"0\" selected=\"False\" position=\"335 399.5\" name=\"TeleportAndShoot\"
     description=\"\" cardinality=\"-1\" hasParent=\"True\">\n          <BehaviorTree
     id=\"0\" />\n          <SubbehaviorNode id=\"2\" />\n          <SequenceNode
     id=\"1\" />\n        </data>\n      </_data>\n    </SubbehaviorNode>\n    <ActionNode

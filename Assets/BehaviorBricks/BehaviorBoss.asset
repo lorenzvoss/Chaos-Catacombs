@@ -15,7 +15,7 @@ MonoBehaviour:
   brickName: Assets/BehaviorBricks/BehaviorBoss.asset
   xml: "\uFEFF<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<BehaviorBricks xmlns:ref=\"urn:padaone\"
     version=\"1.0\">\n  <BehaviorTree id=\"0\" />\n  <runtimeInfo>\n    <BehaviorTree
-    id=\"0\" guid=\"ee5a45efee8bf42eab2f1058bf6143a7\" nextId=\"31\">\n      <root>\n       
+    id=\"0\" guid=\"ee5a45efee8bf42eab2f1058bf6143a7\" nextId=\"34\">\n      <root>\n       
     <RepeatDecorator id=\"1\" />\n      </root>\n      <inputParams>\n        <inputValues>\n         
     <entry name=\"bullet\" type=\"UnityEngine.GameObject\" isBlackboard=\"False\"
     />\n          <entry name=\"shootPoint\" type=\"UnityEngine.Transform\" isBlackboard=\"False\"
@@ -23,13 +23,13 @@ MonoBehaviour:
     value=\"0\" />\n        </inputValues>\n      </inputParams>\n      <outputParams
     />\n      <localParams />\n    </BehaviorTree>\n    <RepeatDecorator id=\"1\"
     loops=\"-1\" policy=\"ContinueWhenChildFails\">\n      <child>\n        <RandomSelectorNode
-    id=\"30\" />\n      </child>\n      <inputParams />\n      <outputParams />\n     
-    <localParams />\n    </RepeatDecorator>\n    <RandomSelectorNode id=\"30\">\n     
+    id=\"33\" />\n      </child>\n      <inputParams />\n      <outputParams />\n     
+    <localParams />\n    </RepeatDecorator>\n    <RandomSelectorNode id=\"33\">\n     
     <probs>\n        <elem>1</elem>\n        <elem>1</elem>\n        <elem>1</elem>\n       
     <elem>1</elem>\n        <elem>1</elem>\n      </probs>\n      <children>\n       
     <elem>\n          <SubbehaviorNode id=\"22\" />\n        </elem>\n        <elem>\n         
-    <SubbehaviorNode id=\"25\" />\n        </elem>\n        <elem>\n          <ActionNode
-    id=\"24\" />\n        </elem>\n        <elem>\n          <SubbehaviorNode id=\"26\"
+    <SubbehaviorNode id=\"25\" />\n        </elem>\n        <elem>\n          <SubbehaviorNode
+    id=\"31\" />\n        </elem>\n        <elem>\n          <SubbehaviorNode id=\"26\"
     />\n        </elem>\n        <elem>\n          <SubbehaviorNode id=\"29\" />\n       
     </elem>\n      </children>\n      <inputParams />\n      <outputParams />\n     
     <localParams />\n    </RandomSelectorNode>\n    <SubbehaviorNode id=\"22\">\n     
@@ -37,10 +37,10 @@ MonoBehaviour:
     <outputParams />\n      <localParams />\n    </SubbehaviorNode>\n    <SubbehaviorNode
     id=\"25\">\n      <_guid>8d446714f248d4d83911096899f9bf03</_guid>\n      <inputParams
     />\n      <outputParams />\n      <localParams />\n    </SubbehaviorNode>\n   
-    <ActionNode id=\"24\" action=\"MyActions/TeleportToRandPos\">\n      <inputParams
-    />\n      <outputParams />\n      <localParams />\n    </ActionNode>\n    <SubbehaviorNode
-    id=\"26\">\n      <_guid>b7cde8290a133422089905eab726d809</_guid>\n      <inputParams>\n       
-    <inputValues>\n          <entry name=\"bullet\" type=\"UnityEngine.GameObject\"
+    <SubbehaviorNode id=\"31\">\n      <_guid>fdd70a6ea6d1b45668b3ea3794868761</_guid>\n     
+    <inputParams />\n      <outputParams />\n      <localParams />\n    </SubbehaviorNode>\n   
+    <SubbehaviorNode id=\"26\">\n      <_guid>b7cde8290a133422089905eab726d809</_guid>\n     
+    <inputParams>\n        <inputValues>\n          <entry name=\"bullet\" type=\"UnityEngine.GameObject\"
     isBlackboard=\"True\" blackboard=\"bullet\" />\n          <entry name=\"shootPoint\"
     type=\"UnityEngine.Transform\" isBlackboard=\"True\" blackboard=\"shootPoint\"
     />\n          <entry name=\"velocity\" type=\"System.Single\" isBlackboard=\"True\"
@@ -51,53 +51,54 @@ MonoBehaviour:
     </runtimeInfo>\n  <editorInfo>\n    <BehaviorTree id=\"0\" _name=\"BehaviorBoss\"
     _description=\"\" _removeIfClosed=\"False\">\n      <_rootList>\n        <elem>\n         
     <RepeatDecorator id=\"1\" />\n        </elem>\n        <elem>\n          <SubbehaviorNode
-    id=\"22\" />\n        </elem>\n        <elem>\n          <ActionNode id=\"24\"
-    />\n        </elem>\n        <elem>\n          <SubbehaviorNode id=\"25\" />\n       
-    </elem>\n        <elem>\n          <SubbehaviorNode id=\"26\" />\n        </elem>\n       
-    <elem>\n          <SubbehaviorNode id=\"29\" />\n        </elem>\n        <elem>\n         
-    <RandomSelectorNode id=\"30\" />\n        </elem>\n      </_rootList>\n     
+    id=\"22\" />\n        </elem>\n        <elem>\n          <SubbehaviorNode id=\"25\"
+    />\n        </elem>\n        <elem>\n          <SubbehaviorNode id=\"26\" />\n       
+    </elem>\n        <elem>\n          <SubbehaviorNode id=\"29\" />\n        </elem>\n       
+    <elem>\n          <SubbehaviorNode id=\"31\" />\n        </elem>\n        <elem>\n         
+    <RandomSelectorNode id=\"33\" />\n        </elem>\n      </_rootList>\n     
     <_nodes>\n        <nodes>\n          <RepeatDecorator id=\"1\" />\n         
-    <RandomSelectorNode id=\"30\" />\n          <SubbehaviorNode id=\"22\" />\n         
-    <ActionNode id=\"24\" />\n          <SubbehaviorNode id=\"25\" />\n         
-    <SubbehaviorNode id=\"26\" />\n          <SubbehaviorNode id=\"29\" />\n       
+    <RandomSelectorNode id=\"33\" />\n          <SubbehaviorNode id=\"22\" />\n         
+    <SubbehaviorNode id=\"25\" />\n          <SubbehaviorNode id=\"26\" />\n         
+    <SubbehaviorNode id=\"29\" />\n          <SubbehaviorNode id=\"31\" />\n       
     </nodes>\n      </_nodes>\n    </BehaviorTree>\n    <RepeatDecorator id=\"1\">\n     
-    <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"790.6116
-    219.2498\" name=\"Repeat\" description=\"Repeats the execution of its child node\"
+    <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"603.3616
+    281.7498\" name=\"Repeat\" description=\"Repeats the execution of its child node\"
     cardinality=\"1\" hasParent=\"False\">\n          <BehaviorTree id=\"0\" />\n         
     <RepeatDecorator id=\"1\" />\n        </data>\n      </_data>\n    </RepeatDecorator>\n   
-    <RandomSelectorNode id=\"30\">\n      <_data>\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"722.5 390\" name=\"Random Selector\" description=\"Selects
+    <RandomSelectorNode id=\"33\">\n      <_data>\n        <data breakpoint=\"0\"
+    selected=\"False\" position=\"559 451.25\" name=\"Random Selector\" description=\"Selects
     randomly one of its children\" cardinality=\"-1\" hasParent=\"True\">\n         
-    <BehaviorTree id=\"0\" />\n          <RandomSelectorNode id=\"30\" />\n         
+    <BehaviorTree id=\"0\" />\n          <RandomSelectorNode id=\"33\" />\n         
     <RepeatDecorator id=\"1\" />\n        </data>\n      </_data>\n    </RandomSelectorNode>\n   
     <SubbehaviorNode id=\"22\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"203.4721 756.0276\" name=\"FinishedSkyAttack\" description=\"\" cardinality=\"-1\"
+    position=\"103.7221 618.5276\" name=\"FinishedSkyAttack\" description=\"\" cardinality=\"-1\"
     hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n          <SubbehaviorNode
-    id=\"22\" />\n          <RandomSelectorNode id=\"30\" />\n        </data>\n     
+    id=\"22\" />\n          <RandomSelectorNode id=\"33\" />\n        </data>\n     
     </_data>\n    </SubbehaviorNode>\n    <SubbehaviorNode id=\"25\">\n      <_data>\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"503.6673 608.9998\" name=\"CompleteLaser\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"353.9173 627.7498\" name=\"CompleteLaser\"
     description=\"\" cardinality=\"-1\" hasParent=\"True\">\n          <BehaviorTree
     id=\"0\" />\n          <SubbehaviorNode id=\"25\" />\n          <RandomSelectorNode
-    id=\"30\" />\n        </data>\n      </_data>\n    </SubbehaviorNode>\n    <ActionNode
-    id=\"24\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"598.9446 752.1943\" name=\"MyActions/TeleportToRandPos\" description=\"\"
-    cardinality=\"0\" hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n         
-    <ActionNode id=\"24\" />\n          <RandomSelectorNode id=\"30\" />\n       
-    </data>\n      </_data>\n    </ActionNode>\n    <SubbehaviorNode id=\"26\">\n     
-    <_data>\n        <data breakpoint=\"0\" selected=\"True\" position=\"763.9447
-    582.6113\" name=\"TeleportShootX3\" description=\"\" cardinality=\"-1\" hasParent=\"True\">\n         
-    <BehaviorTree id=\"0\" />\n          <SubbehaviorNode id=\"26\" />\n         
-    <RandomSelectorNode id=\"30\" />\n        </data>\n      </_data>\n    </SubbehaviorNode>\n   
-    <SubbehaviorNode id=\"29\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"1013 762.25\" name=\"CompleteKickAttack\" description=\"\" cardinality=\"-1\"
+    id=\"33\" />\n        </data>\n      </_data>\n    </SubbehaviorNode>\n    <SubbehaviorNode
+    id=\"31\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
+    position=\"559 626.25\" name=\"CompletedSprint\" description=\"\" cardinality=\"-1\"
     hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n          <SubbehaviorNode
-    id=\"29\" />\n          <RandomSelectorNode id=\"30\" />\n        </data>\n     
+    id=\"31\" />\n          <RandomSelectorNode id=\"33\" />\n        </data>\n     
+    </_data>\n    </SubbehaviorNode>\n    <SubbehaviorNode id=\"26\">\n      <_data>\n       
+    <data breakpoint=\"0\" selected=\"False\" position=\"772.9447 636.3613\" name=\"TeleportShootX3\"
+    description=\"\" cardinality=\"-1\" hasParent=\"True\">\n          <BehaviorTree
+    id=\"0\" />\n          <SubbehaviorNode id=\"26\" />\n          <RandomSelectorNode
+    id=\"33\" />\n        </data>\n      </_data>\n    </SubbehaviorNode>\n    <SubbehaviorNode
+    id=\"29\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
+    position=\"1008.25 637.25\" name=\"CompleteKickAttack\" description=\"\" cardinality=\"-1\"
+    hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n          <SubbehaviorNode
+    id=\"29\" />\n          <RandomSelectorNode id=\"33\" />\n        </data>\n     
     </_data>\n    </SubbehaviorNode>\n  </editorInfo>\n</BehaviorBricks>"
-  zoom: 0.8
+  zoom: 0.7
   subslist:
   - {fileID: 11400000, guid: 0a88b20b4523c4a2ea334d917fce84ea, type: 2}
   - {fileID: 11400000, guid: b7cde8290a133422089905eab726d809, type: 2}
   - {fileID: 11400000, guid: 8d446714f248d4d83911096899f9bf03, type: 2}
   - {fileID: 11400000, guid: b8495d692b3d040809dade3171dbdb3c, type: 2}
   - {fileID: 11400000, guid: 20a53b56c96c04248b28381b22a9c5eb, type: 2}
+  - {fileID: 11400000, guid: fdd70a6ea6d1b45668b3ea3794868761, type: 2}
   _guid: ee5a45efee8bf42eab2f1058bf6143a7

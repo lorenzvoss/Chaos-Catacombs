@@ -41,7 +41,7 @@ MonoBehaviour:
     description=\"\" cardinality=\"0\" hasParent=\"True\">\n          <BehaviorTree
     id=\"0\" />\n          <ActionNode id=\"3\" />\n          <SequenceNode id=\"1\"
     />\n        </data>\n      </_data>\n    </ActionNode>\n    <ActionNode id=\"2\">\n     
-    <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"696 574\"
+    <_data>\n        <data breakpoint=\"0\" selected=\"True\" position=\"696 574\"
     name=\"MyActions/ShootLaserBeams\" description=\"\" cardinality=\"0\" hasParent=\"True\">\n         
     <BehaviorTree id=\"0\" />\n          <ActionNode id=\"2\" />\n          <SequenceNode
     id=\"1\" />\n        </data>\n      </_data>\n    </ActionNode>\n  </editorInfo>\n</BehaviorBricks>"

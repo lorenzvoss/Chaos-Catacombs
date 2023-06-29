@@ -6,6 +6,9 @@ public class PlayerHealth : MonoBehaviour
 {
     private float maxHealth;
     private float currentHealth;
+    public bool isHitByKick;
+    public bool isHitByLaser;
+    public bool isHitByJump;
 
     // Start is called before the first frame update
     void Start()
@@ -13,11 +16,33 @@ public class PlayerHealth : MonoBehaviour
         maxHealth = 100;
         Debug.Log("Health: " + maxHealth);
         currentHealth = maxHealth;    
+
+        isHitByJump = false;
+        isHitByLaser = false;
+        isHitByKick = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(isHitByJump)
+        {
+            currentHealth -= 15; 
+            Debug.Log("Health: " + currentHealth);
+            isHitByJump = false;
+        }
+        if(isHitByLaser)
+        {
+            currentHealth -= 3; 
+            Debug.Log("Health: " + currentHealth);
+        }
+        if(isHitByKick)
+        {
+            currentHealth -= 20; 
+            Debug.Log("Health: " + currentHealth);
+            isHitByKick = false;
+        }
+        
         if(currentHealth <= 0)
         {
             Destroy(gameObject);
