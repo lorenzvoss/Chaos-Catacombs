@@ -19,13 +19,15 @@ namespace BBUnity.Actions
         private float launchSpeed;
         private float attackSpeed;
         private bool reachedSkyPosition;
+        private GameObject player;
 
 
         public override void OnStart()
         {
             animator = gameObject.GetComponent<Animator>();
             navAgent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
-            targetPosition = GameObject.FindWithTag("Player").transform.position;
+            player = GameObject.FindWithTag("Player");
+            targetPosition = player.transform.position;
             targetPosition.y = 0f;
             skyPosition = (gameObject.transform.position + targetPosition)/2  + new Vector3(0f, 15f, 0f);
             isLaunching = true;
@@ -44,7 +46,7 @@ namespace BBUnity.Actions
             if (isLaunching)
             {    
                 navAgent.enabled = false;
-                gameObject.transform.LookAt(GameObject.FindWithTag("Player").transform);
+                gameObject.transform.LookAt(player.transform);
                 
                 if(gameObject.transform.position == skyPosition)
                 {
@@ -64,11 +66,32 @@ namespace BBUnity.Actions
                     }
                 }
             }else{
-                gameObject.transform.LookAt(GameObject.FindWithTag("Player").transform);
-                navAgent.enabled = true;
+                gameObject.transform.LookAt(player.transform);
+                
+                player.GetComponent<PlayerHealth>().isHitByJump = true;
+                player.GetComponent<PlayerHealth>().damageShockWave = CalculateDamage();
+                //navAgent.enabled = true;
                 return TaskStatus.COMPLETED;    
             }
             return TaskStatus.RUNNING;
+        }
+
+        private int CalculateDamage()
+        {
+            float distanceToPlayer = Vector3.Distance(gameObject.transform.position, player.transform.position);
+            int maxDamage = 20;
+            float maxDamageDistance = 5f;
+
+            if(distanceToPlayer < maxDamageDistance)
+            {
+                float distanceRatio = 1 - (distanceToPlayer / maxDamageDistance);
+                int damage = Mathf.RoundToInt(maxDamage * distanceRatio);
+                Debug.Log("Distanz: " + distanceToPlayer);
+                Debug.Log("Damage: " + damage);
+                return damage;
+            }
+
+            return 0;
         }
     }
 }

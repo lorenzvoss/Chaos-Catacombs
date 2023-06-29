@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
     public bool isHitByKick;
     public bool isHitByLaser;
     public bool isHitByJump;
+    public float damageShockWave;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class PlayerHealth : MonoBehaviour
         isHitByJump = false;
         isHitByLaser = false;
         isHitByKick = false;
+        damageShockWave = 0f;
     }
 
     // Update is called once per frame
@@ -27,8 +29,9 @@ public class PlayerHealth : MonoBehaviour
     {
         if(isHitByJump)
         {
-            currentHealth -= 15; 
+            currentHealth -= damageShockWave; 
             Debug.Log("Health: " + currentHealth);
+            damageShockWave = 0f;
             isHitByJump = false;
         }
         if(isHitByLaser)

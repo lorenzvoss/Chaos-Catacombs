@@ -71,15 +71,11 @@ namespace BBUnity.Actions
             RaycastHit hit;
             if (Physics.Raycast(gameObject.transform.position, direction, out hit, 3f))
             {
-                Debug.Log("Hit erkannt: Jetzt muss noch das gameObject passen!");
                 if (hit.collider.gameObject == player)
                 {
-                    // Der Spieler befindet sich vor dem Zielobjekt und ist in der gewünschten Distanz
-                    Debug.Log("Der Spieler befindet sich vor dem Zielobjekt.");
                     return true;
                 }
             }
-            Debug.Log("Kein treffer erkannt!!!!!");
             return false;
             
         }
