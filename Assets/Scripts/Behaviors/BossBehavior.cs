@@ -8,7 +8,7 @@ public class BossBehavior : BasicEnemyBehavior
     // Start is called before the first frame update
     void Start()
     {
-        maxHealth = 1000;
+        maxHealth = 2000;
         currentHealth = maxHealth;
         renderers  = GetComponentsInChildren<Renderer>();
         lastPosition = transform.position;
