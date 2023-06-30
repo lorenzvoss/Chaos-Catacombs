@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &588599816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 588599817}
+  m_Layer: 0
+  m_Name: EnemyParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &588599817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588599816}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &673231218
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,6 +229,7 @@ MonoBehaviour:
   roomPlanes: []
   wallVertical: {fileID: 8079539989346928297, guid: c348cb51311426d4fb99a7533004bcf6, type: 3}
   wallHorizontal: {fileID: 1916726304420837088, guid: 2dc18d7e02822da4382139e07b33049b, type: 3}
+  EnemyParent: {fileID: 588599816}
   PlayerPrefab: {fileID: 8852933529317200788, guid: 5f8ea9f7a1a857f4e908093a201c0b80, type: 3}
   Enemy1Prefab: {fileID: 2692964429418969655, guid: 234829b153f644118b9732a59780911f, type: 3}
   Enemy2Prefab: {fileID: 1237406692072013142, guid: a54c5ad2c7ff1467cae12bdc50c59935, type: 3}
@@ -214,6 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c2c04c02636088419bd098123d70d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyParent: {fileID: 588599816}
   RoundsTillBoss: 4
 --- !u!4 &719114475
 Transform:

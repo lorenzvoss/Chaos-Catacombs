@@ -25,6 +25,7 @@ public class DungeonCreator: MonoBehaviour
     public List<GameObject> roomPlanes;
 
     public GameObject wallVertical, wallHorizontal;
+    public GameObject EnemyParent;
 
     List<Vector3Int> possibleDoorVerticalPosition;
     List<Vector3Int> possibleDoorHorizontalPosition;
@@ -38,16 +39,10 @@ public class DungeonCreator: MonoBehaviour
 
     private GameObject player;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //CreateDungeon();
-    }
-
     /// <summary>
     /// Erstellt Dungeon inklusive Boden, Waenden, Spieler, (work in progress)Gegnern
     /// </summary>
-    public void CreateDungeon()
+    public void CreateDungeon(int round)
     {
         DestroyAllChildren();
         roomPlanes.Clear();
@@ -91,7 +86,7 @@ public class DungeonCreator: MonoBehaviour
 
         listOfRooms.RemoveAt(startRoomIndex); //Spieler raum entfernen
         roomPlanes.RemoveAt(startRoomIndex);
-        SpawnAllEnemies(listOfRooms);
+        SpawnAllEnemies(listOfRooms, round);
     }
 
     private int SpawnPlayer(List<Node> listOfRooms)
@@ -120,7 +115,7 @@ public class DungeonCreator: MonoBehaviour
         return middlePoint;
     }
 
-    private void SpawnAllEnemies(List<Node> enemyRooms)
+    private void SpawnAllEnemies(List<Node> enemyRooms, int round)
     {
         for(int i = 0; i < enemyRooms.Count; i++)
         {
@@ -128,13 +123,13 @@ public class DungeonCreator: MonoBehaviour
             switch(enemyType)
             {
                 case 1:
-                    SpawnEnemies(enemyRooms[i], Enemy1Prefab, 2, i);
+                    SpawnEnemies(enemyRooms[i], Enemy1Prefab, 3 + round, i);
                     break;
                 case 2:
-                    SpawnEnemies(enemyRooms[i], Enemy2Prefab, 2, i);
+                    SpawnEnemies(enemyRooms[i], Enemy2Prefab, 2 + round, i);
                     break;
                 case 3:
-                    SpawnEnemies(enemyRooms[i], Enemy3Prefab, 2, i);
+                    SpawnEnemies(enemyRooms[i], Enemy3Prefab, 2 + round, i);
                     break;
             }
         }
@@ -148,6 +143,7 @@ public class DungeonCreator: MonoBehaviour
             GameObject enemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity, this.transform);
             enemy.GetComponent<BehaviorExecutor>().SetBehaviorParam("wanderArea", roomPlanes[indexRoom]);
             enemy.GetComponent<BehaviorExecutor>().SetBehaviorParam("target", player);
+            enemy.transform.parent = EnemyParent.transform;
         }
     }
 
@@ -270,6 +266,7 @@ public class DungeonCreator: MonoBehaviour
     private void DestroyAllChildren()
     {
         DestroyImmediate(GameObject.Find("DungeonCorridors"));
+        DestroyImmediate(GameObject.Find("P_LPSP_UI_Canvas(Clone)"));
 
         while (transform.childCount != 0)
         {
