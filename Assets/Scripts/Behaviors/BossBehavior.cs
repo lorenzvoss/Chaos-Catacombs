@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossBehavior : BasicEnemyBehavior
 {
@@ -8,7 +9,7 @@ public class BossBehavior : BasicEnemyBehavior
     // Start is called before the first frame update
     void Start()
     {
-        maxHealth = 2000;
+        maxHealth = 10;
         currentHealth = maxHealth;
         renderers  = GetComponentsInChildren<Renderer>();
         lastPosition = transform.position;
@@ -33,7 +34,8 @@ public class BossBehavior : BasicEnemyBehavior
         if (currentHealth <= 0)
         {
             animator.SetBool("isAlive", false);
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            SceneManager.LoadScene("FinishScene");
         }
     }
 
@@ -44,4 +46,6 @@ public class BossBehavior : BasicEnemyBehavior
         Debug.Log("Boss: " + currentHealth);        
         FlashRed();
     }
+
+
 }

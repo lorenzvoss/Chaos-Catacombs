@@ -10209,6 +10209,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3286366765536309616, guid: 95f28d0e3f2f64f7995e392310a6bbd3, type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3286366765536309619, guid: 95f28d0e3f2f64f7995e392310a6bbd3, type: 3}
       propertyPath: m_Name
       value: Mech_RaeTheRedPanda
