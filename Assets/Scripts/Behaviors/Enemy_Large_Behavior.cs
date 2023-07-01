@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy_Large_Behavior : BasicEnemyBehavior
 {
@@ -13,7 +14,12 @@ public class Enemy_Large_Behavior : BasicEnemyBehavior
     // Start is called before the first frame update
     void Start()
     {
+        healthbarCanvas = gameObject.transform.Find("HealthBarCanvas").gameObject;
+        background = healthbarCanvas.transform.Find("Background").gameObject;
+        foreground = background.transform.Find("Foreground").gameObject;
+        foregroundSprite = foreground.GetComponent<Image>();
         currentHealth = maxHealth;
+        foregroundSprite.fillAmount = currentHealth/maxHealth;
         renderers  = GetComponentsInChildren<Renderer>();
         lastPosition = transform.position;
         animator = gameObject.GetComponent<Animator>();
@@ -28,6 +34,8 @@ public class Enemy_Large_Behavior : BasicEnemyBehavior
     // Update is called once per frame
     void Update()
     {
+        healthbarCanvas.transform.LookAt(player.transform);
+
         if(isHit == true)
         {
             HitByBullet();
@@ -58,6 +66,7 @@ public class Enemy_Large_Behavior : BasicEnemyBehavior
             Invoke("ResetHitPlayer", 2);
             rb.isKinematic = true;
         }
+        rb.isKinematic = true;
     }
 
     private void EnableBehaviorTree()
@@ -69,7 +78,7 @@ public class Enemy_Large_Behavior : BasicEnemyBehavior
     public override void HitByBullet()
     {
         currentHealth -= isStunned ? 20:1;
-        
+        foregroundSprite.fillAmount = currentHealth/maxHealth;
         FlashRed();
     }
 

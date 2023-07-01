@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI; 
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -12,12 +13,23 @@ public class PlayerHealth : MonoBehaviour
     public bool isHitByJump;
     public float damageShockWave;
 
+    private GameObject Canvas;
+    private GameObject healthbarCanvas;
+    private GameObject background;
+    private GameObject foreground;
+    private Image foregroundSprite;
+
     // Start is called before the first frame update
     void Start()
     {
-        maxHealth = 100;
-        Debug.Log("Health: " + maxHealth);
-        currentHealth = maxHealth;    
+        Canvas = GameObject.Find("P_LPSP_UI_Canvas(Clone)");
+        healthbarCanvas = Canvas.transform.Find("HealthBarCanvas").gameObject;
+        background = healthbarCanvas.transform.Find("Background").gameObject;
+        foreground = background.transform.Find("Foreground").gameObject;
+        foregroundSprite = foreground.GetComponent<Image>();
+        maxHealth = 1000;
+        currentHealth = maxHealth;  
+        foregroundSprite.fillAmount = currentHealth/maxHealth;  
 
         isHitByJump = false;
         isHitByLaser = false;
@@ -31,20 +43,20 @@ public class PlayerHealth : MonoBehaviour
         if(isHitByJump)
         {
             currentHealth -= damageShockWave; 
-            Debug.Log("Health: " + currentHealth);
+            foregroundSprite.fillAmount = currentHealth/maxHealth;
             damageShockWave = 0f;
             isHitByJump = false;
         }
         if(isHitByLaser)
         {
             currentHealth -= 0.5f; 
-            Debug.Log("Health: " + currentHealth);
+            foregroundSprite.fillAmount = currentHealth/maxHealth;
             isHitByLaser = false;
         }
         if(isHitByKick)
         {
             currentHealth -= 20; 
-            Debug.Log("Health: " + currentHealth);
+            foregroundSprite.fillAmount = currentHealth/maxHealth;
             isHitByKick = false;
         }
         
@@ -60,20 +72,20 @@ public class PlayerHealth : MonoBehaviour
         if(collider.gameObject.CompareTag("Enemy"))
         {
             currentHealth -= 5;
-            Debug.Log("Health: " + currentHealth);
+            foregroundSprite.fillAmount = currentHealth/maxHealth;
         }
 
         if(collider.gameObject.CompareTag("Rocket"))
         {
             currentHealth -= 10;
-            Debug.Log("Health: " + currentHealth);
+            foregroundSprite.fillAmount = currentHealth/maxHealth;
             Destroy(collider.gameObject);
         }
 
         if(collider.gameObject.CompareTag("Enemy_Large"))
         {
-            currentHealth -= 20;
-            Debug.Log("Health: " + currentHealth);
+            currentHealth -= 10;
+            foregroundSprite.fillAmount = currentHealth/maxHealth;
         }
     }
 }

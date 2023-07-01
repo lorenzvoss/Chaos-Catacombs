@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; 
 
 public class BasicEnemyBehavior : MonoBehaviour
 {
-    public int maxHealth;
+    public float maxHealth;
     public bool isHit;
 
     protected Renderer[] renderers;
-    protected int currentHealth;
+    protected float currentHealth;
     protected Dictionary<Renderer, Color[]> originalEmissionColors = new Dictionary<Renderer, Color[]>();
     protected float emissionIntensity = 1.5f; // Adjust the emission intensity as needed
     protected Vector3 lastPosition;
@@ -16,12 +17,22 @@ public class BasicEnemyBehavior : MonoBehaviour
     protected Rigidbody rb;
     protected GameObject player;
 
+    protected GameObject healthbarCanvas;
+    protected GameObject background;
+    protected GameObject foreground;
+    protected Image foregroundSprite;
+
 
 
     private void Start()
     {
+        healthbarCanvas = gameObject.transform.Find("HealthBarCanvas").gameObject;
+        background = healthbarCanvas.transform.Find("Background").gameObject;
+        foreground = background.transform.Find("Foreground").gameObject;
+        foregroundSprite = foreground.GetComponent<Image>();
         maxHealth = 90;
         currentHealth = maxHealth;
+        foregroundSprite.fillAmount = currentHealth/maxHealth;
         renderers  = GetComponentsInChildren<Renderer>();
         lastPosition = transform.position;
         animator = gameObject.GetComponent<Animator>();
@@ -31,6 +42,8 @@ public class BasicEnemyBehavior : MonoBehaviour
     }
     private void Update()
     {
+        healthbarCanvas.transform.LookAt(player.transform);
+        
         if(isHit == true)
         {
             HitByBullet();
@@ -49,6 +62,7 @@ public class BasicEnemyBehavior : MonoBehaviour
     {
         // Decrease current health
         currentHealth -= 30;
+        foregroundSprite.fillAmount = currentHealth/maxHealth;
         
         FlashRed();
     }
