@@ -216,10 +216,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7debca3dd2029c84688be995c767d16e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dungeonWidth: 100
-  dungeonLength: 100
-  roomWidthMin: 20
-  roomLengthMin: 20
+  dungeonWidth: 60
+  dungeonLength: 60
+  roomWidthMin: 15
+  roomLengthMin: 15
   maxIterations: 30
   corridorWidht: 3
   material: {fileID: 2100000, guid: 55a116e262661884fbb77a46cafa561f, type: 2}
