@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,12 +13,15 @@ public class GameManager : MonoBehaviour
     public int RoundsTillBoss = 4;
 
     private int round = 0;
+    private int enemiesMaxCount;
     private bool dungeonIsInitialized = false;
+
     // Start is called before the first frame update
     void Start()
     {
         dungeonCreator = GetComponent<DungeonCreator>();
         StartNewRound();
+        enemiesMaxCount = EnemyParent.transform.childCount;
     }
 
     // Update is called once per frame
@@ -24,7 +29,13 @@ public class GameManager : MonoBehaviour
     {
         if (EnemyParent.transform.childCount == 0 && dungeonIsInitialized)
         {
-            StartNewRound(); 
+            StartNewRound();
+        }
+        else
+        {
+            var canvas = GameObject.Find("EnemiesCount");
+            TextMeshProUGUI roundText = canvas.GetComponent<TextMeshProUGUI>();
+            roundText.text = $"{EnemyParent.transform.childCount}/{enemiesMaxCount}";
         }
     }
 
@@ -41,6 +52,11 @@ public class GameManager : MonoBehaviour
             round++;
             dungeonCreator.CreateDungeon(round);
             dungeonIsInitialized = true;
+            
+            //Set Round Count
+            var canvas = GameObject.Find("RoundCount");
+            TextMeshProUGUI roundText = canvas.GetComponent<TextMeshProUGUI>();
+            roundText.text = $"{round}/{RoundsTillBoss}";
         }
     }
 

@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class DungeonCreator: MonoBehaviour
+public class DungeonCreator : MonoBehaviour
 {
     public int dungeonWidth;
     public int dungeonLength;
@@ -99,7 +99,7 @@ public class DungeonCreator: MonoBehaviour
         //Spielerprefab spawnen
         player = Instantiate(PlayerPrefab, middlePoint, Quaternion.identity, this.transform);
         player.AddComponent<PlayerHealth>();
-        
+
         //Startraum Index zurueckgeben
         return startRoomIndex;
     }
@@ -111,16 +111,16 @@ public class DungeonCreator: MonoBehaviour
             0,
             (room.TopRightAreaCorner.y + room.BottomLeftAreaCorner.y) / 2);
 
-        Debug.Log("Berechneter Mittelpunkt: " + middlePoint);
+        //Debug.Log("Berechneter Mittelpunkt: " + middlePoint);
         return middlePoint;
     }
 
     private void SpawnAllEnemies(List<Node> enemyRooms, int round)
     {
-        for(int i = 0; i < enemyRooms.Count; i++)
+        for (int i = 0; i < enemyRooms.Count; i++)
         {
             int enemyType = UnityEngine.Random.Range(1, 4);
-            switch(enemyType)
+            switch (enemyType)
             {
                 case 1:
                     SpawnEnemies(enemyRooms[i], Enemy1Prefab, 3 + round, i);
@@ -138,7 +138,7 @@ public class DungeonCreator: MonoBehaviour
     private void SpawnEnemies(Node room, GameObject enemyPrefab, int count, int indexRoom)
     {
         Vector3 spawnPoint = computeMiddlePoint(room);
-        for(int i = 0; i < count; i++)
+        for (int i = 0; i < count; i++)
         {
             GameObject enemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity, this.transform);
             enemy.GetComponent<BehaviorExecutor>().SetBehaviorParam("wanderArea", roomPlanes[indexRoom]);
@@ -202,7 +202,8 @@ public class DungeonCreator: MonoBehaviour
         GameObject dungeonFloor = new GameObject("Mesh" + bottomLeftCorner, typeof(MeshFilter), typeof(MeshRenderer));
 
         Vector3 center = Vector3.zero;
-        foreach(Vector3 vertice in vertices){
+        foreach (Vector3 vertice in vertices)
+        {
             center += vertice;
         }
         center /= vertices.Length;
@@ -242,8 +243,8 @@ public class DungeonCreator: MonoBehaviour
             var wallPosition = new Vector3(bottomRightV.x, 0, col);
             AddWallPositionToList(wallPosition, possibleWallVerticalPosition, possibleDoorVerticalPosition);
         }
-        
-        if(parentObject.name == "RoomParent")
+
+        if (parentObject.name == "RoomParent")
         {
             roomPlanes.Add(centerOfFloor);
         }
@@ -268,6 +269,16 @@ public class DungeonCreator: MonoBehaviour
         DestroyImmediate(GameObject.Find("DungeonCorridors"));
         DestroyImmediate(GameObject.Find("P_LPSP_UI_Canvas(Clone)"));
 
+        //Gegner zerstoeren
+        while (EnemyParent.transform.childCount != 0)
+        {
+            foreach (Transform child in EnemyParent.transform)
+            {
+                DestroyImmediate(child.gameObject);
+            }
+        }
+
+        //Alle Objekte, die Dungeon bilden zerstoeren
         while (transform.childCount != 0)
         {
             foreach (Transform item in transform)
