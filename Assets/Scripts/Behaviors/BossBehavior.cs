@@ -16,7 +16,7 @@ public class BossBehavior : BasicEnemyBehavior
         background = healthbarCanvas.transform.Find("Background").gameObject;
         foreground = background.transform.Find("Foreground").gameObject;
         foregroundSprite = foreground.GetComponent<Image>();
-        maxHealth = 1000;
+        maxHealth = 3000;
         currentHealth = maxHealth;
         foregroundSprite.fillAmount = currentHealth/maxHealth;
         renderers  = GetComponentsInChildren<Renderer>();

@@ -15,7 +15,7 @@ MonoBehaviour:
   brickName: Assets/TeleportShootX3.asset
   xml: "\uFEFF<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<BehaviorBricks xmlns:ref=\"urn:padaone\"
     version=\"1.0\">\n  <BehaviorTree id=\"0\" />\n  <runtimeInfo>\n    <BehaviorTree
-    id=\"0\" guid=\"b7cde8290a133422089905eab726d809\" nextId=\"8\">\n      <root>\n       
+    id=\"0\" guid=\"b7cde8290a133422089905eab726d809\" nextId=\"9\">\n      <root>\n       
     <SequenceNode id=\"1\" />\n      </root>\n      <inputParams>\n        <inputValues>\n         
     <entry name=\"bullet\" type=\"UnityEngine.GameObject\" isBlackboard=\"True\"
     blackboard=\"bullet\" />\n          <entry name=\"shootPoint\" type=\"UnityEngine.Transform\"
@@ -26,17 +26,18 @@ MonoBehaviour:
     id=\"2\" />\n        </elem>\n        <elem>\n          <ActionNode id=\"6\"
     />\n        </elem>\n        <elem>\n          <SubbehaviorNode id=\"4\" />\n       
     </elem>\n        <elem>\n          <ActionNode id=\"7\" />\n        </elem>\n       
-    <elem>\n          <SubbehaviorNode id=\"5\" />\n        </elem>\n      </children>\n     
-    <inputParams />\n      <outputParams />\n      <localParams />\n    </SequenceNode>\n   
-    <SubbehaviorNode id=\"2\">\n      <_guid>0a88b20b4523c4a2ea334d917fce84ea</_guid>\n     
-    <inputParams>\n        <inputValues>\n          <entry name=\"bullet\" type=\"UnityEngine.GameObject\"
+    <elem>\n          <SubbehaviorNode id=\"5\" />\n        </elem>\n        <elem>\n         
+    <ActionNode id=\"8\" />\n        </elem>\n      </children>\n      <inputParams
+    />\n      <outputParams />\n      <localParams />\n    </SequenceNode>\n    <SubbehaviorNode
+    id=\"2\">\n      <_guid>0a88b20b4523c4a2ea334d917fce84ea</_guid>\n      <inputParams>\n       
+    <inputValues>\n          <entry name=\"bullet\" type=\"UnityEngine.GameObject\"
     isBlackboard=\"True\" blackboard=\"bullet\" />\n          <entry name=\"shootPoint\"
     type=\"UnityEngine.Transform\" isBlackboard=\"True\" blackboard=\"shootPoint\"
     />\n          <entry name=\"velocity\" type=\"System.Single\" isBlackboard=\"True\"
     blackboard=\"velocity\" />\n        </inputValues>\n      </inputParams>\n     
     <outputParams />\n      <localParams />\n    </SubbehaviorNode>\n    <ActionNode
     id=\"6\" action=\"Basic/WaitForSeconds\">\n      <inputParams>\n        <inputValues>\n         
-    <entry name=\"seconds\" type=\"System.Single\" isBlackboard=\"False\" value=\"1\"
+    <entry name=\"seconds\" type=\"System.Single\" isBlackboard=\"False\" value=\"2\"
     />\n        </inputValues>\n      </inputParams>\n      <outputParams />\n     
     <localParams />\n    </ActionNode>\n    <SubbehaviorNode id=\"4\">\n      <_guid>0a88b20b4523c4a2ea334d917fce84ea</_guid>\n     
     <inputParams>\n        <inputValues>\n          <entry name=\"bullet\" type=\"UnityEngine.GameObject\"
@@ -46,7 +47,7 @@ MonoBehaviour:
     blackboard=\"velocity\" />\n        </inputValues>\n      </inputParams>\n     
     <outputParams />\n      <localParams />\n    </SubbehaviorNode>\n    <ActionNode
     id=\"7\" action=\"Basic/WaitForSeconds\">\n      <inputParams>\n        <inputValues>\n         
-    <entry name=\"seconds\" type=\"System.Single\" isBlackboard=\"False\" value=\"1\"
+    <entry name=\"seconds\" type=\"System.Single\" isBlackboard=\"False\" value=\"2\"
     />\n        </inputValues>\n      </inputParams>\n      <outputParams />\n     
     <localParams />\n    </ActionNode>\n    <SubbehaviorNode id=\"5\">\n      <_guid>0a88b20b4523c4a2ea334d917fce84ea</_guid>\n     
     <inputParams>\n        <inputValues>\n          <entry name=\"bullet\" type=\"UnityEngine.GameObject\"
@@ -54,47 +55,55 @@ MonoBehaviour:
     type=\"UnityEngine.Transform\" isBlackboard=\"True\" blackboard=\"shootPoint\"
     />\n          <entry name=\"velocity\" type=\"System.Single\" isBlackboard=\"True\"
     blackboard=\"velocity\" />\n        </inputValues>\n      </inputParams>\n     
-    <outputParams />\n      <localParams />\n    </SubbehaviorNode>\n  </runtimeInfo>\n 
-    <editorInfo>\n    <BehaviorTree id=\"0\" _name=\"TeleportShootX3\" _description=\"\"
-    _removeIfClosed=\"False\">\n      <_rootList>\n        <elem>\n          <SequenceNode
-    id=\"1\" />\n        </elem>\n        <elem>\n          <SubbehaviorNode id=\"2\"
-    />\n        </elem>\n        <elem>\n          <SubbehaviorNode id=\"4\" />\n       
-    </elem>\n        <elem>\n          <SubbehaviorNode id=\"5\" />\n        </elem>\n       
-    <elem>\n          <ActionNode id=\"6\" />\n        </elem>\n        <elem>\n         
-    <ActionNode id=\"7\" />\n        </elem>\n      </_rootList>\n      <_nodes>\n       
-    <nodes>\n          <SequenceNode id=\"1\" />\n          <SubbehaviorNode id=\"2\"
-    />\n          <SubbehaviorNode id=\"4\" />\n          <SubbehaviorNode id=\"5\"
-    />\n          <ActionNode id=\"6\" />\n          <ActionNode id=\"7\" />\n       
-    </nodes>\n      </_nodes>\n    </BehaviorTree>\n    <SequenceNode id=\"1\">\n     
-    <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"706 215.5\"
-    name=\"Sequence\" description=\"Executes all its children in sequence until all
-    of them are successful\" cardinality=\"-1\" hasParent=\"False\">\n          <BehaviorTree
-    id=\"0\" />\n          <SequenceNode id=\"1\" />\n        </data>\n      </_data>\n   
-    </SequenceNode>\n    <SubbehaviorNode id=\"2\">\n      <_data>\n        <data
-    breakpoint=\"0\" selected=\"False\" position=\"335 399.5\" name=\"TeleportAndShoot\"
-    description=\"\" cardinality=\"-1\" hasParent=\"True\">\n          <BehaviorTree
-    id=\"0\" />\n          <SubbehaviorNode id=\"2\" />\n          <SequenceNode
-    id=\"1\" />\n        </data>\n      </_data>\n    </SubbehaviorNode>\n    <ActionNode
-    id=\"6\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"484
-    534.5\" name=\"Basic/WaitForSeconds\" description=\"Action that success after
-    a period of time.\" cardinality=\"0\" hasParent=\"True\">\n          <BehaviorTree
-    id=\"0\" />\n          <ActionNode id=\"6\" />\n          <SequenceNode id=\"1\"
-    />\n        </data>\n      </_data>\n    </ActionNode>\n    <SubbehaviorNode
-    id=\"4\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"657
-    403.5\" name=\"TeleportAndShoot\" description=\"\" cardinality=\"-1\" hasParent=\"True\">\n         
+    <outputParams />\n      <localParams />\n    </SubbehaviorNode>\n    <ActionNode
+    id=\"8\" action=\"Basic/WaitForSeconds\">\n      <inputParams>\n        <inputValues>\n         
+    <entry name=\"seconds\" type=\"System.Single\" isBlackboard=\"False\" value=\"2\"
+    />\n        </inputValues>\n      </inputParams>\n      <outputParams />\n     
+    <localParams />\n    </ActionNode>\n  </runtimeInfo>\n  <editorInfo>\n    <BehaviorTree
+    id=\"0\" _name=\"TeleportShootX3\" _description=\"\" _removeIfClosed=\"False\">\n     
+    <_rootList>\n        <elem>\n          <SequenceNode id=\"1\" />\n        </elem>\n       
+    <elem>\n          <SubbehaviorNode id=\"2\" />\n        </elem>\n        <elem>\n         
+    <SubbehaviorNode id=\"4\" />\n        </elem>\n        <elem>\n          <SubbehaviorNode
+    id=\"5\" />\n        </elem>\n        <elem>\n          <ActionNode id=\"6\"
+    />\n        </elem>\n        <elem>\n          <ActionNode id=\"7\" />\n       
+    </elem>\n        <elem>\n          <ActionNode id=\"8\" />\n        </elem>\n     
+    </_rootList>\n      <_nodes>\n        <nodes>\n          <SequenceNode id=\"1\"
+    />\n          <SubbehaviorNode id=\"2\" />\n          <SubbehaviorNode id=\"4\"
+    />\n          <SubbehaviorNode id=\"5\" />\n          <ActionNode id=\"6\" />\n         
+    <ActionNode id=\"7\" />\n          <ActionNode id=\"8\" />\n        </nodes>\n     
+    </_nodes>\n    </BehaviorTree>\n    <SequenceNode id=\"1\">\n      <_data>\n       
+    <data breakpoint=\"0\" selected=\"False\" position=\"690 133\" name=\"Sequence\"
+    description=\"Executes all its children in sequence until all of them are successful\"
+    cardinality=\"-1\" hasParent=\"False\">\n          <BehaviorTree id=\"0\" />\n         
+    <SequenceNode id=\"1\" />\n        </data>\n      </_data>\n    </SequenceNode>\n   
+    <SubbehaviorNode id=\"2\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
+    position=\"319 317\" name=\"TeleportAndShoot\" description=\"\" cardinality=\"-1\"
+    hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n          <SubbehaviorNode
+    id=\"2\" />\n          <SequenceNode id=\"1\" />\n        </data>\n      </_data>\n   
+    </SubbehaviorNode>\n    <ActionNode id=\"6\">\n      <_data>\n        <data breakpoint=\"0\"
+    selected=\"False\" position=\"468 452\" name=\"Basic/WaitForSeconds\" description=\"Action
+    that success after a period of time.\" cardinality=\"0\" hasParent=\"True\">\n         
+    <BehaviorTree id=\"0\" />\n          <ActionNode id=\"6\" />\n          <SequenceNode
+    id=\"1\" />\n        </data>\n      </_data>\n    </ActionNode>\n    <SubbehaviorNode
+    id=\"4\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"641
+    321\" name=\"TeleportAndShoot\" description=\"\" cardinality=\"-1\" hasParent=\"True\">\n         
     <BehaviorTree id=\"0\" />\n          <SubbehaviorNode id=\"4\" />\n         
     <SequenceNode id=\"1\" />\n        </data>\n      </_data>\n    </SubbehaviorNode>\n   
     <ActionNode id=\"7\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"888 560.5\" name=\"Basic/WaitForSeconds\" description=\"Action that
+    position=\"872 478\" name=\"Basic/WaitForSeconds\" description=\"Action that
     success after a period of time.\" cardinality=\"0\" hasParent=\"True\">\n         
     <BehaviorTree id=\"0\" />\n          <ActionNode id=\"7\" />\n          <SequenceNode
     id=\"1\" />\n        </data>\n      </_data>\n    </ActionNode>\n    <SubbehaviorNode
-    id=\"5\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"955
-    403.5\" name=\"TeleportAndShoot\" description=\"\" cardinality=\"-1\" hasParent=\"True\">\n         
+    id=\"5\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"939
+    321\" name=\"TeleportAndShoot\" description=\"\" cardinality=\"-1\" hasParent=\"True\">\n         
     <BehaviorTree id=\"0\" />\n          <SubbehaviorNode id=\"5\" />\n         
-    <SequenceNode id=\"1\" />\n        </data>\n      </_data>\n    </SubbehaviorNode>\n 
-    </editorInfo>\n</BehaviorBricks>"
-  zoom: 0.9
+    <SequenceNode id=\"1\" />\n        </data>\n      </_data>\n    </SubbehaviorNode>\n   
+    <ActionNode id=\"8\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"True\"
+    position=\"1283.75 396.25\" name=\"Basic/WaitForSeconds\" description=\"Action
+    that success after a period of time.\" cardinality=\"0\" hasParent=\"True\">\n         
+    <BehaviorTree id=\"0\" />\n          <ActionNode id=\"8\" />\n          <SequenceNode
+    id=\"1\" />\n        </data>\n      </_data>\n    </ActionNode>\n  </editorInfo>\n</BehaviorBricks>"
+  zoom: 0.8
   subslist:
   - {fileID: 11400000, guid: 0a88b20b4523c4a2ea334d917fce84ea, type: 2}
   - {fileID: 11400000}

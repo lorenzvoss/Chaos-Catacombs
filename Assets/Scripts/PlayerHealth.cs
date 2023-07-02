@@ -27,7 +27,7 @@ public class PlayerHealth : MonoBehaviour
         background = healthbarCanvas.transform.Find("Background").gameObject;
         foreground = background.transform.Find("Foreground").gameObject;
         foregroundSprite = foreground.GetComponent<Image>();
-        maxHealth = 1000;
+        maxHealth = 100;
         currentHealth = maxHealth;  
         foregroundSprite.fillAmount = currentHealth/maxHealth;  
 
@@ -55,6 +55,7 @@ public class PlayerHealth : MonoBehaviour
         }
         if(isHitByKick)
         {
+            Debug.Log("JETZT!!!!!!");
             currentHealth -= 20; 
             foregroundSprite.fillAmount = currentHealth/maxHealth;
             isHitByKick = false;

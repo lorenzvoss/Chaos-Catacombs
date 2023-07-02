@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.029213836, g: 0.04262086, b: 0.031811815, a: 1}
+  m_IndirectSpecularColor: {r: 0.029121313, g: 0.04252461, b: 0.031715877, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10165,6 +10165,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2403493905059286052, guid: 95f28d0e3f2f64f7995e392310a6bbd3, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2403493905059286488, guid: 95f28d0e3f2f64f7995e392310a6bbd3, type: 3}
+      propertyPath: behavior
+      value: 
+      objectReference: {fileID: 11400000, guid: ee5a45efee8bf42eab2f1058bf6143a7, type: 2}
+    - target: {fileID: 2403493905059286488, guid: 95f28d0e3f2f64f7995e392310a6bbd3, type: 3}
+      propertyPath: blackboard.floatParams.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2403493905059286488, guid: 95f28d0e3f2f64f7995e392310a6bbd3, type: 3}
+      propertyPath: blackboard.objectParams.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2403493905059286488, guid: 95f28d0e3f2f64f7995e392310a6bbd3, type: 3}
+      propertyPath: blackboard.floatParams.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2403493905059286488, guid: 95f28d0e3f2f64f7995e392310a6bbd3, type: 3}
+      propertyPath: blackboard.objectParams.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2403493905059286488, guid: 95f28d0e3f2f64f7995e392310a6bbd3, type: 3}
+      propertyPath: blackboard.objectParams.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2403493905059286488, guid: 95f28d0e3f2f64f7995e392310a6bbd3, type: 3}
+      propertyPath: blackboard.floatParamsNames.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2403493905059286488, guid: 95f28d0e3f2f64f7995e392310a6bbd3, type: 3}
+      propertyPath: blackboard.objectParamsNames.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2796829401935817673, guid: 95f28d0e3f2f64f7995e392310a6bbd3, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -10175,7 +10211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2796829401935817673, guid: 95f28d0e3f2f64f7995e392310a6bbd3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0000009536743
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2796829401935817673, guid: 95f28d0e3f2f64f7995e392310a6bbd3, type: 3}
       propertyPath: m_LocalPosition.z

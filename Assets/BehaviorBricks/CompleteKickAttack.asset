@@ -38,7 +38,7 @@ MonoBehaviour:
     all its children in sequence until all of them are successful\" cardinality=\"-1\"
     hasParent=\"False\">\n          <BehaviorTree id=\"0\" />\n          <SequenceNode
     id=\"1\" />\n        </data>\n      </_data>\n    </SequenceNode>\n    <ActionNode
-    id=\"2\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"413
+    id=\"2\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"True\" position=\"413
     495\" name=\"MyActions/KickAttack\" description=\"\" cardinality=\"0\" hasParent=\"True\">\n         
     <BehaviorTree id=\"0\" />\n          <ActionNode id=\"2\" />\n          <SequenceNode
     id=\"1\" />\n        </data>\n      </_data>\n    </ActionNode>\n    <ActionNode

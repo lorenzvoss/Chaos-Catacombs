@@ -84,7 +84,7 @@ MonoBehaviour:
     hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n          <SubbehaviorNode
     id=\"31\" />\n          <RandomSelectorNode id=\"33\" />\n        </data>\n     
     </_data>\n    </SubbehaviorNode>\n    <SubbehaviorNode id=\"26\">\n      <_data>\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"772.9447 636.3613\" name=\"TeleportShootX3\"
+    <data breakpoint=\"0\" selected=\"True\" position=\"772.9447 636.3613\" name=\"TeleportShootX3\"
     description=\"\" cardinality=\"-1\" hasParent=\"True\">\n          <BehaviorTree
     id=\"0\" />\n          <SubbehaviorNode id=\"26\" />\n          <RandomSelectorNode
     id=\"33\" />\n        </data>\n      </_data>\n    </SubbehaviorNode>\n    <SubbehaviorNode

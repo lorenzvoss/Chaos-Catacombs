@@ -67,15 +67,21 @@ namespace BBUnity.Actions
 
         private bool checkHitPlayer()
         { 
-            Vector3 direction = player.transform.position - gameObject.transform.position ;
+            GameObject temp = gameObject.GetComponent<SphereCollider>().gameObject;
+            Vector3 correctedPlayerPos = player.transform.position + new Vector3(0f,1f,0f);
+            Vector3 direction = correctedPlayerPos - temp.transform.position ;
             RaycastHit hit;
-            if (Physics.Raycast(gameObject.transform.position, direction, out hit, 3f))
+            if (Physics.Raycast(temp.transform.position, direction, out hit, 3f))
             {
+                Debug.Log(hit.collider.gameObject);
+                Debug.Log(player);
                 if (hit.collider.gameObject == player)
                 {
+                    Debug.Log("TRUE");
                     return true;
                 }
             }
+            Debug.Log("FALSE");
             return false;
             
         }
