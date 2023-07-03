@@ -48,10 +48,14 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+
             //Es muessen noch Runden gespielt werden
             round++;
             dungeonCreator.CreateDungeon(round);
             dungeonIsInitialized = true;
+
+            //Anzahl Gegner am anfang der Runde aktualisieren
+            enemiesMaxCount = EnemyParent.transform.childCount;
             
             //Set Round Count
             var canvas = GameObject.Find("RoundCount");
