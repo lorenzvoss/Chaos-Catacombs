@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
 
     void StartNewRound()
     {
-        if (round > RoundsTillBoss)
+        if (round >= RoundsTillBoss)
         {
             //Max Rundenzahl erreicht also Bosskampf starten
             StartBossFight();
