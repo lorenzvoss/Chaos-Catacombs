@@ -49,7 +49,7 @@ public class PlayerHealth : MonoBehaviour
         }
         if(isHitByLaser)
         {
-            currentHealth -= 0.5f; 
+            currentHealth -= 0.1f; //Time.deltaTime; 
             foregroundSprite.fillAmount = currentHealth/maxHealth;
             isHitByLaser = false;
         }
